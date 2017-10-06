@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GameController : MonoBehaviour {
+	public int calcNum;	//計算させる数の個数
 
-	// Use this for initialization
 	void Start () {
-		
+		calcNum = 2;	//【仮】後からスタート時に選択予定
 	}
 	
-	// Update is called once per frame
 	void Update () {
 		
 	}
