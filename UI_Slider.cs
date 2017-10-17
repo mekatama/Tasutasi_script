@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class UI_Slider : MonoBehaviour {
 	private Slider slider;	//Sliderコンポーネント取得用
 	private float level;	//スライド値を入れる用
+	public Text slideNumText;		//Textコンポーネント取得用
+
 
 	void Start () {
 		slider = GetComponent<Slider>();//Sliderコンポーネント取得
@@ -18,6 +20,9 @@ public class UI_Slider : MonoBehaviour {
 		if (slider.value != level) {
 			level = slider.value;		//スライド値の変化判定用に再設定
 			Debug.Log(slider.value);	//スライド値取得Log
+
+			slideNumText.text = slider.value.ToString("000");
+			
 		}
 	}
 
