@@ -5,6 +5,7 @@ using UnityEngine;
 public class PanelSpawn : MonoBehaviour {
 	public GameObject[] panelObject;	//panelのプレハブを配列で管理
 	public GameObject gameController;	//GameController取得
+	public bool panelSpawn = false;		//pane出現フラグ
 	public float timeOut;				//panelを出現させたい時間間隔
 	private float timeElapsed;			//時間を仮に格納する変数
 	private int panelType;				//panelの種類
@@ -14,14 +15,16 @@ public class PanelSpawn : MonoBehaviour {
 	}
 
 	void Update () {
-		//gcって仮の変数にGameControllerのコンポーネントを入れる
-		GameController gc = gameController.GetComponent<GameController>();
-		//時間判定→パネル生成
-		timeElapsed += Time.deltaTime;	//経過時間の保存
-		if(panelTotalNum < gc.calcNum){	//GameControllerで生成数を管理
-			if(timeElapsed >= timeOut){	//指定した経過時間に達したら生成
-				PanelGo();
-				panelTotalNum ++;		//カウンター
+		if(panelSpawn){
+			//gcって仮の変数にGameControllerのコンポーネントを入れる
+			GameController gc = gameController.GetComponent<GameController>();
+			//時間判定→パネル生成
+			timeElapsed += Time.deltaTime;	//経過時間の保存
+			if(panelTotalNum < gc.calcNum){	//GameControllerで生成数を管理
+				if(timeElapsed >= timeOut){	//指定した経過時間に達したら生成
+					PanelGo();
+					panelTotalNum ++;		//カウンター
+				}
 			}
 		}
 	}
