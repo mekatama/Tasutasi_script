@@ -10,6 +10,7 @@ public class PanelSpawn : MonoBehaviour {
 	private float timeElapsed;			//時間を仮に格納する変数
 	private int panelType;				//panelの種類
 	private int panelTotalNum;			//panelの総数
+	private int spawnType;				//生成位置の種類(上0 左1 右2)
 
 	void Start () {
 	}
@@ -30,22 +31,51 @@ public class PanelSpawn : MonoBehaviour {
 	}
 
 	public void PanelGo(){
-		float x_pos = Random.Range(-2.0f,2.0f);	//ランダムで出現位置を決める
-		panelType = Random.Range(0,2);			//ランダムで出現panelを選出
-		timeOut = 1.5f;							//【仮】出現させたい時間間隔
+		float x_pos = Random.Range(-2.0f, 2.0f);	//ランダムで出現位置を決める
+		float y_pos = Random.Range(0.0f, 5.0f);		//ランダムで出現位置を決める
+		panelType = Random.Range(0, 2);				//ランダムで出現panelを選出
+		spawnType = Random.Range(0, 3);				//ランダムで出現する位置を選出
+		timeOut = 1.5f;								//【仮】出現させたい時間間隔
+
+		//生成位置により、出現位置を設定する
+		switch(spawnType){
+			case 0:				//upから生成
+				y_pos = 5.5f;
+				break;
+			case 1:				//leftから生成
+				x_pos = -2.5f;
+				break;
+			case 2:				//rightから生成
+				x_pos = 2.5f;
+				break;
+		}
 
 		//panelを生成する
 		GameObject panel = (GameObject)Instantiate(
 			panelObject[panelType],		//生成するpanel
-			new Vector2(x_pos, 5.5f),	//生成時の位置
+			new Vector2(x_pos, y_pos),	//生成時の位置
 			transform.rotation			//生成時の角度
 		);
 
-		//panel生成時にaddforce
-		Rigidbody2D panelRigidbody = panel.GetComponent<Rigidbody2D>();	//コンポーネント取得
-		panelRigidbody.AddForce(new Vector2(0.0f, -50.0f));				//addforce
+		//コンポーネント取得
+		Rigidbody2D panelRigidbody = panel.GetComponent<Rigidbody2D>();
 
-		//【予定】生成位置により、addforceする方向を設定する
+		//生成位置により、addforceする方向を設定する
+		switch(spawnType){
+			case 0:													//upから生成
+				//panel生成時にaddforce
+				panelRigidbody.AddForce(new Vector2(0.0f, -50.0f));	//addforce
+				Debug.Log("top_spawn");
+				break;
+			case 1:													//leftから生成
+				panelRigidbody.AddForce(new Vector2(30.0f, 0.0f));	//addforce
+				Debug.Log("left_spawn");
+				break;
+			case 2:													//rightから生成
+				panelRigidbody.AddForce(new Vector2(-30.0f, 0.0f));	//addforce
+				Debug.Log("right_spawn");
+				break;
+		}
 
 		//panel生成用の時間をリセット
 		timeElapsed = 0.0f;
