@@ -20,9 +20,11 @@ public class Anser_Save : MonoBehaviour {
 		if(gc.panelNumTotal == anserNum){
 			//正解
 			Debug.Log("Good Job !!");
+			gc.isAnser = true;
 		}else{
 			//間違い
 			Debug.Log("Miss !!");
+			gc.isAnser = true;
 		}
 	}
 }
