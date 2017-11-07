@@ -9,7 +9,7 @@ public class PanelSpawn : MonoBehaviour {
 	public float timeOut;				//panelを出現させたい時間間隔
 	private float timeElapsed;			//時間を仮に格納する変数
 	private int panelType;				//panelの種類
-	private int panelTotalNum;			//panelの総数
+	public int panelTotalNum;			//panelの総数
 	private int spawnType;				//生成位置の種類(上0 左1 右2)
 
 	void Start () {
@@ -65,15 +65,12 @@ public class PanelSpawn : MonoBehaviour {
 			case 0:													//upから生成
 				//panel生成時にaddforce
 				panelRigidbody.AddForce(new Vector2(0.0f, -50.0f));	//addforce
-				Debug.Log("top_spawn");
 				break;
 			case 1:													//leftから生成
 				panelRigidbody.AddForce(new Vector2(30.0f, 0.0f));	//addforce
-				Debug.Log("left_spawn");
 				break;
 			case 2:													//rightから生成
 				panelRigidbody.AddForce(new Vector2(-30.0f, 0.0f));	//addforce
-				Debug.Log("right_spawn");
 				break;
 		}
 
