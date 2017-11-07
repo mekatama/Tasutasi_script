@@ -12,9 +12,10 @@ public class GameController : MonoBehaviour {
 
 	State state;
 	public int calcNum;			//計算させる数の個数
-	public int[] panelNum;		//計算用ぎ行列変数
+	public int[] panelNum;		//計算用行列変数
 	public int panelNumTotal;	//合計
 	public int panelDestroyNum;	//生成後に削除したpanel数
+	public bool isAnser;		//解答したフラグ
 
 	public float startTime = 1.5f;	//UIのSTARTを表示する時間
 	float time = 0f;				//UIのSTARTを表示する時間用の変数
@@ -25,9 +26,9 @@ public class GameController : MonoBehaviour {
 
 	void Start () {
 		inputCamvas.enabled = false;	//InputUI非表示
-		calcNum = 2;	//【仮】後からスタート時に選択予定
-		Ready();		//ステート変更
-		time = 0;		//UIのSTARTを表示する時間用の変数の初期化
+		calcNum = 2;					//【仮】後からスタート時に選択予定
+		Ready();						//ステート変更
+		time = 0;						//UIのSTARTを表示する時間用の変数の初期化
 	}
 	
 	void LateUpdate () {
@@ -46,6 +47,7 @@ public class GameController : MonoBehaviour {
 			case State.Play:
 				Debug.Log("State.Play");
 				ps.panelSpawn = true;				//panel生成するフラグon
+				isAnser = false;
 				//panel出現数と削除数を比較
 				if(calcNum == panelDestroyNum){
 					Anser();						//ステート変更
@@ -55,21 +57,21 @@ public class GameController : MonoBehaviour {
 			case State.Anser:
 				inputCamvas.enabled = true;			//InputUI表示
 				Debug.Log("State.Anser");
+				//解答したら、以下を呼び出せば良さそう
+				if(isAnser == true){
+					inputCamvas.enabled = false;	//InputUI非表示
+					panelDestroyNum = 0;			//panel削除数を初期化
+					ps.panelTotalNum = 0;			//panelの総数を初期化
+					panelNum[0] = 0;				//panelの数字を初期化
+					panelNum[1] = 0;				//panelの数字を初期化
+					GameStart();	//ステート変更
+				}
 				break;
 		}
 	}
 
-
 	void Update () {
-//		time += Time.deltaTime;
-//		if(time > startTime){
-//			startCamvas.enabled = false;	//StartUI非表示
-//			GameStart();					//ステート変更
-//		}
-
-		//【仮】この計算はアップデートで判定したくない
-		panelNumTotal = panelNum[0] + panelNum[1];
-		Debug.Log("Goukei = " + panelNumTotal);
+		//未使用
 	}
 
 	void Ready(){
@@ -82,5 +84,10 @@ public class GameController : MonoBehaviour {
 
 	void Anser(){
 		state = State.Anser;
+		//合計を計算
+		panelNumTotal = panelNum[0] + panelNum[1];
+		Debug.Log("Goukei = " + panelNumTotal);
+
+		//ここで、最後の集計用に正誤を保存するかもしれない
 	}
 }
