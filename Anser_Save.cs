@@ -19,11 +19,13 @@ public class Anser_Save : MonoBehaviour {
 		//計算の合計と比較
 		if(gc.panelNumTotal == anserNum){
 			//正解
-			Debug.Log("Good Job !!");
+//			Debug.Log("Good Job !!");
+			gc.isSeikai = true;
 			gc.isAnser = true;
 		}else{
 			//間違い
-			Debug.Log("Miss !!");
+//			Debug.Log("Miss !!");
+			gc.isSeikai = false;
 			gc.isAnser = true;
 		}
 	}
