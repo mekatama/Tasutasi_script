@@ -29,6 +29,7 @@ public class GameController : MonoBehaviour {
 	float time = 0f;				//UIのSTARTを表示する時間用の変数
 	public float resultTime = 1.5f;	//UIの〇✖を表示する時間
 	float time_marubatu = 0f;		//UIの〇✖を表示する時間用の変数
+	float time_finish = 0f;			//UIのFINISHを表示する時間用の変数
 
 	public Canvas startCamvas;		//Canvas_Start
 	public Canvas inputCamvas;		//Canvas_Input
@@ -72,6 +73,7 @@ public class GameController : MonoBehaviour {
 					startCamvas.enabled = false;	//StartUI非表示
 					Play();					//ステート変更
 					Debug.Log("State.Play");
+					time_finish = 0f;		//初期化
 				}
 //				Debug.Log("State.Ready");
 				break;
@@ -138,7 +140,12 @@ public class GameController : MonoBehaviour {
 				break;
 			//全問解答
 			case State.AllResult:
-				finishCamvas.enabled = true;	//finishUI表示
+				finishCamvas.enabled = true;			//finishUI表示
+				time_finish += Time.deltaTime;
+				if(time_finish > resultTime){
+					finishCamvas.enabled = false;		//finishUI非表示
+					SceneManager.LoadScene("Select");	//シーンのロード
+				}
 				break;
 		}
 	}
@@ -164,12 +171,6 @@ public class GameController : MonoBehaviour {
 
 	void Result(){
 		state = State.Result;
-
-		//やり方はこれであってるけど、正誤をどこで判別しよう
-		//ここで、最後の集計用に正誤を保存するかもしれない
-//		int i = syutudaiNumNow - 1;
-//		seigo[i] = 1;				//配列に初期値0を入れておく
-//		Debug.Log("配列番号[" + i + "]  = " + seigo[i]);
 	}
 
 	void AllResult(){
