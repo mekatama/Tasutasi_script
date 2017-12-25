@@ -56,6 +56,7 @@ public class PanelSpawn : MonoBehaviour {
 			new Vector2(x_pos, y_pos),	//生成時の位置
 			transform.rotation			//生成時の角度
 		);
+		Debug.Log("PanelGo!!");
 
 		//コンポーネント取得
 		Rigidbody2D panelRigidbody = panel.GetComponent<Rigidbody2D>();
