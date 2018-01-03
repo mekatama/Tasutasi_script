@@ -16,7 +16,7 @@ public class Panel : MonoBehaviour {
 			//gcって仮の変数にGameControllerのコンポーネントを入れる
 			GameController gc = gameController.GetComponent<GameController>();
 
-			//【予定】gamrControllerにpanelNumを渡して計算できそうか実験する
+			//gamrControllerにpanelNumを渡して計算できそうか実験する
 			if(gc.panelNum[0] == 0){
 				gc.panelNum[0] = panelNum;
 			}else if(gc.panelNum[1] == 0){
