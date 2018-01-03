@@ -71,9 +71,9 @@ public class GameController : MonoBehaviour {
 				time += Time.deltaTime;
 				if(time > startTime){
 					startCamvas.enabled = false;	//StartUI非表示
-					Play();					//ステート変更
+					Play();							//ステート変更
 					Debug.Log("State.Play");
-					time_finish = 0f;		//初期化
+					time_finish = 0f;				//初期化
 				}
 //				Debug.Log("State.Ready");
 				break;
