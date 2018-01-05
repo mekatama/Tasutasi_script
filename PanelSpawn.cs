@@ -40,6 +40,8 @@ public class PanelSpawn : MonoBehaviour {
 		panelType = Random.Range(0, 2);				//ランダムで出現panelを選出
 		spawnType = Random.Range(0, 3);				//ランダムで出現する位置を選出
 		timeOut = 1.5f;								//【仮】出現させたい時間間隔
+		//gcって仮の変数にGameControllerのコンポーネントを入れる
+		GameController gc = gameController.GetComponent<GameController>();
 
 		//生成位置により、出現位置を設定する
 		switch(spawnType){
@@ -55,10 +57,17 @@ public class PanelSpawn : MonoBehaviour {
 		}
 
 		//panelを生成する
-		//まず、数字か絵柄をセレクト
-		//仮、ランダムかセレクトか選べるようにしたい
-		if(panelImageType == 0){
+		//数字のみ出現
+		if(gc.imageUse == 0){
 			kariPaneru = panelObject[panelType];
+		//数字と絵柄のランダム
+		}else if(gc.imageUse == 1){
+			if(panelImageType == 0){
+				kariPaneru = panelObject[panelType];
+			}else{
+				kariPaneru = panelObject_i[panelType];
+			}
+		//絵柄のみ出現
 		}else{
 			kariPaneru = panelObject_i[panelType];
 		}
