@@ -25,6 +25,7 @@ public class GameController : MonoBehaviour {
 	public int[] seigo;				//解答の正誤保存flag配列 1=正解 2=不正解 0=初期値；
 	public int seikaiNum;			//正解数
 	public int imageUse;			//画像パネルの使用flag(0:数字のみ,1:ランダム,2:画像のみ)
+	public int sliderMaxValue;		//スライダー入力の最大値
 
 	public float startTime = 1.5f;	//UIのSTARTを表示する時間
 	float time = 0f;				//UIのSTARTを表示する時間用の変数
@@ -51,6 +52,9 @@ public class GameController : MonoBehaviour {
 			calcNum = 3;				//計算する個数
 			syutudaiNum = 5;			//出題数の設定
 			imageUse = 0;				//画像パネルの使用判定:数字のみ
+			sliderMaxValue = 10;		//スライダー入力の最大値
+
+//			Debug.Log("max:" + sliderMaxValue);	//
 		}
 
 		//他のステージの設定をする

@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Anser_Save : MonoBehaviour {
-	public float anserNum;	//
-	public Slider slider;	//Sliderコンポーネント取得用
-	public Text text;		//Textコンポーネント取得用
+	public float anserNum;				//スライド値を入れる
+	public Slider slider;				//Sliderコンポーネント取得用
+	public Text text;					//Textコンポーネント取得用
 	public GameObject gameController;	//GameController取得
 
 	public void SaveNum () {

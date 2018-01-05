@@ -7,15 +7,21 @@ public class UI_Slider : MonoBehaviour {
 	private Slider slider;		//Sliderコンポーネント取得用
 	private float level;		//スライド値を入れる用
 	public Text slideNumText;	//Textコンポーネント取得用
+	public GameObject gameController;	//GameController取得
 
 
 	void Start () {
 		slider = GetComponent<Slider>();//Sliderコンポーネント取得
 		slider.value = 1;				//スライド値の初期化
 		level = slider.value;			//スライド値の変化判定用
+
 	}
 	
 	void Update () {
+		//gcって仮の変数にGameControllerのコンポーネントを入れる
+		GameController gc = gameController.GetComponent<GameController>();
+		slider.maxValue = gc.sliderMaxValue;	//max Valueの変更
+
 		//スライド値が変化したら
 		if (slider.value != level) {
 			level = slider.value;		//スライド値の変化判定用に再設定
