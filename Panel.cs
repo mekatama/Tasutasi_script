@@ -16,12 +16,8 @@ public class Panel : MonoBehaviour {
 			//gcって仮の変数にGameControllerのコンポーネントを入れる
 			GameController gc = gameController.GetComponent<GameController>();
 
-			//gamrControllerにpanelNumを渡して計算できそうか実験する
-			if(gc.panelNum[0] == 0){
-				gc.panelNum[0] = panelNum;
-			}else if(gc.panelNum[1] == 0){
-				gc.panelNum[1] = panelNum;
-			}
+			//パネルの数字を保存
+			gc.panelNum[gc.panelDestroyNum] = panelNum;
 
 			//削除したパネル数カウント
 			gc.panelDestroyNum ++;

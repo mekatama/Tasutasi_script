@@ -48,14 +48,22 @@ public class GameController : MonoBehaviour {
 		//各ステージの固有値初期設定
 		//2個の足し算、問題数は5
 		if(SceneManager.GetActiveScene ().name == "Main1"){
-			calcNum = 2;				//計算する個数
+			calcNum = 3;				//計算する個数
 			syutudaiNum = 5;			//出題数の設定
 			imageUse = 0;				//画像パネルの使用判定:数字のみ
 		}
 
 		//他のステージの設定をする
 
-		seigo = new int[syutudaiNum];	//配列の初期化
+		//配列の初期化
+		panelNum = new int[calcNum];
+		seigo = new int[syutudaiNum];
+
+		//panel数値の初期化
+		for(int i = 0; i < panelNum.Length; i++){
+			panelNum[i] = 0;				//配列に初期値0を入れておく
+//			Debug.Log("配列番号[" + i + "]  = " + panelNum[i]);
+		}
 
 		//正誤flagの初期化
 		for(int i = 0; i < seigo.Length; i++){
@@ -87,8 +95,7 @@ public class GameController : MonoBehaviour {
 				isAnser = false;
 				//panel出現数と削除数を比較
 				if(calcNum == panelDestroyNum){
-					//現在の出題数をインクリメント
-					syutudaiNumNow += 1;
+					syutudaiNumNow += 1;			//現在の出題数をインクリメント
 					Debug.Log(syutudaiNumNow);
 					Anser();						//ステート変更
 //					Debug.Log("State.Anser");
@@ -127,9 +134,10 @@ public class GameController : MonoBehaviour {
 						//イロイロ初期化
 						panelDestroyNum = 0;			//panel削除数を初期化
 						ps.panelTotalNum = 0;			//panelの総数を初期化
-						panelNum[0] = 0;				//panelの数字を初期化
-						panelNum[1] = 0;				//panelの数字を初期化
 						time_marubatu = 0;				//〇✖表示時間を初期化
+						for(int i = 0; i < panelNum.Length; i++){
+							panelNum[i] = 0;			//配列に初期値0を入れておく
+						}
 
 						Play();	//ステート変更
 					}
@@ -161,8 +169,12 @@ public class GameController : MonoBehaviour {
 
 	void Anser(){
 		state = State.Anser;
+		panelNumTotal = 0;		//初期化
 		//合計を計算
-		panelNumTotal = panelNum[0] + panelNum[1];
+		for(int i = 0; i < panelNum.Length; i++){
+			panelNumTotal = panelNumTotal + panelNum[i];		//
+//			Debug.Log("配列番号[" + i + "]  = " + panelNum[i]);
+		}
 		Debug.Log("Goukei = " + panelNumTotal);
 
 		//ここで掛け算も可能
