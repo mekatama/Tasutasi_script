@@ -24,6 +24,7 @@ public class GameController : MonoBehaviour {
 	public bool isSeikai;			//正解フラグ
 	public int[] seigo;				//解答の正誤保存flag配列 1=正解 2=不正解 0=初期値；
 	public int seikaiNum;			//正解数
+	public int imageUse;			//画像パネルの使用flag(0:数字のみ,1:ランダム,2:画像のみ)
 
 	public float startTime = 1.5f;	//UIのSTARTを表示する時間
 	float time = 0f;				//UIのSTARTを表示する時間用の変数
@@ -49,7 +50,10 @@ public class GameController : MonoBehaviour {
 		if(SceneManager.GetActiveScene ().name == "Main1"){
 			calcNum = 2;				//計算する個数
 			syutudaiNum = 5;			//出題数の設定
+			imageUse = 0;				//画像パネルの使用判定:数字のみ
 		}
+
+		//他のステージの設定をする
 
 		seigo = new int[syutudaiNum];	//配列の初期化
 
@@ -115,13 +119,6 @@ public class GameController : MonoBehaviour {
 					maruCamvas.enabled = false;		//maruUI非表示
 					batuCamvas.enabled = false;		//batuUI非表示
 
-					//イロイロ初期化
-//					panelDestroyNum = 0;			//panel削除数を初期化
-//					ps.panelTotalNum = 0;			//panelの総数を初期化
-//					panelNum[0] = 0;				//panelの数字を初期化
-//					panelNum[1] = 0;				//panelの数字を初期化
-//					time_marubatu = 0;				//〇✖表示時間を初期化
-
 					//ここで出題数に達しているか判定なのかな
 					if(syutudaiNumNow == syutudaiNum){
 						//最後の結果画面のstateにここから移動する
@@ -167,6 +164,8 @@ public class GameController : MonoBehaviour {
 		//合計を計算
 		panelNumTotal = panelNum[0] + panelNum[1];
 		Debug.Log("Goukei = " + panelNumTotal);
+
+		//ここで掛け算も可能
 	}
 
 	void Result(){
