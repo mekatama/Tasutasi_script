@@ -11,5 +11,6 @@ public class UI_Mondaisu : MonoBehaviour {
 		//gcって仮の変数にGameControllerのコンポーネントを入れる
 		GameController gc = gameController.GetComponent<GameController>();
 		//結果テキスト表示
-		resultText.text = "全　" + gc.syutudaiNum + "　問";	}
+		resultText.text = "全　" + gc.syutudaiNum + "　問";
+	}
 }
