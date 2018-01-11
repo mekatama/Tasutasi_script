@@ -30,6 +30,7 @@ public class GameController : MonoBehaviour {
 	public float startTime = 1.5f;	//UIのSTARTを表示する時間
 	float time = 0f;				//UIのSTARTを表示する時間用の変数
 	public float resultTime = 1.5f;	//UIの〇✖を表示する時間
+	public float allResultTime = 3.0f;	//UIのリザルトを表示する時間
 	float time_marubatu = 0f;		//UIの〇✖を表示する時間用の変数
 	float time_finish = 0f;			//UIのFINISHを表示する時間用の変数
 
@@ -40,21 +41,29 @@ public class GameController : MonoBehaviour {
 	public Canvas finishCamvas;		//Canvas_Finish
 	public PanelSpawn ps;			//PanelSpawn1
 
+	AudioSource audioSource;		//AudioSourceコンポーネント取得用
+	public AudioClip audioClipMaru;	//Maru SE
+	public AudioClip audioClipBatu;	//Batu SE
+	public AudioClip audioClipMiss;	//Miss SE
+	public AudioClip audioClipOk;	//Ok SE
+	private bool seGo;				//SE再生一回だけフラグ
+
+
 	void Start () {
 		inputCamvas.enabled = false;	//InputUI非表示
 		maruCamvas.enabled = false;		//maruUI非表示
 		batuCamvas.enabled = false;		//batuUI非表示
 		finishCamvas.enabled = false;	//finishUI非表示
-
+		audioSource = gameObject.GetComponent<AudioSource>();		//AudioSourceコンポーネント取得
+		seGo = false;												//SE再生用
+	
 		//各ステージの固有値初期設定
 		//2個の足し算、問題数は5
 		if(SceneManager.GetActiveScene ().name == "Main1"){
-			calcNum = 3;				//計算する個数
-			syutudaiNum = 5;			//出題数の設定
-			imageUse = 0;				//画像パネルの使用判定:数字のみ
+			calcNum = 2;				//計算する個数
+			syutudaiNum = 3;			//出題数の設定
+			imageUse = 0;				//画像パネルの使用判定(0:数字のみ,1:ランダム,2:画像のみ)
 			sliderMaxValue = 10;		//スライダー入力の最大値
-
-//			Debug.Log("max:" + sliderMaxValue);	//
 		}
 
 		//他のステージの設定をする
@@ -118,9 +127,19 @@ public class GameController : MonoBehaviour {
 			case State.Result:
 				//ここで〇✖の表示をする
 				if(isSeikai){
-					maruCamvas.enabled = true;		//maruUI表示
+					maruCamvas.enabled = true;			//maruUI表示
+					if(seGo == false){
+						audioSource.clip = audioClipMaru;	//SE決定
+						audioSource.Play ();				//SE再生
+						seGo = true;
+					}
 				}else{
-					batuCamvas.enabled = true;		//batuUI表示
+					batuCamvas.enabled = true;			//batuUI表示
+					if(seGo == false){
+						audioSource.clip = audioClipBatu;	//SE決定
+						audioSource.Play ();				//SE再生
+						seGo = true;
+					}
 				}
 				inputCamvas.enabled = false;		//InputUI非表示
 
@@ -129,6 +148,7 @@ public class GameController : MonoBehaviour {
 				if(time_marubatu > resultTime){
 					maruCamvas.enabled = false;		//maruUI非表示
 					batuCamvas.enabled = false;		//batuUI非表示
+					seGo = false;					//SE一回だけ処理終わり
 
 					//ここで出題数に達しているか判定なのかな
 					if(syutudaiNumNow == syutudaiNum){
@@ -151,8 +171,24 @@ public class GameController : MonoBehaviour {
 			case State.AllResult:
 				finishCamvas.enabled = true;			//finishUI表示
 				time_finish += Time.deltaTime;
-				if(time_finish > resultTime){
+				//正解数でSEを鳴らしわける
+				if(seikaiNum != 0){
+					if(seGo == false){
+						audioSource.clip = audioClipOk;	//SE決定
+						audioSource.Play ();			//SE再生
+						seGo = true;
+					}
+				}else{
+					if(seGo == false){
+						audioSource.clip = audioClipMiss;	//SE決定
+						audioSource.Play ();				//SE再生
+						seGo = true;
+					}
+				}
+
+				if(time_finish > allResultTime){
 					finishCamvas.enabled = false;		//finishUI非表示
+					seGo = false;
 					SceneManager.LoadScene("Select");	//シーンのロード
 				}
 				break;
