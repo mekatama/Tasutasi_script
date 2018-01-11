@@ -11,6 +11,6 @@ public class UI_Result : MonoBehaviour {
 		//gcって仮の変数にGameControllerのコンポーネントを入れる
 		GameController gc = gameController.GetComponent<GameController>();
 		//結果テキスト表示
-		resultText.text = gc.syutudaiNum + "問中　" + gc.seikaiNum + "問正解";
+		resultText.text = gc.syutudaiNum + "問中 " + gc.seikaiNum + "問正解";
 	}
 }
