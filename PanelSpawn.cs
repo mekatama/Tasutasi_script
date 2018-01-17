@@ -34,14 +34,17 @@ public class PanelSpawn : MonoBehaviour {
 	}
 
 	public void PanelGo(){
-		float x_pos = Random.Range(-2.0f, 2.0f);	//ランダムで出現位置を決める
-		float y_pos = Random.Range(0.0f, 5.0f);		//ランダムで出現位置を決める
-		panelImageType = Random.Range(0, 2);		//ランダムで出現panelの絵柄を選出
-		panelType = Random.Range(0, 2);				//ランダムで出現panelを選出
-		spawnType = Random.Range(0, 3);				//ランダムで出現する位置を選出
-		timeOut = 1.5f;								//【仮】出現させたい時間間隔
 		//gcって仮の変数にGameControllerのコンポーネントを入れる
 		GameController gc = gameController.GetComponent<GameController>();
+
+		float x_pos = Random.Range(-2.0f, 2.0f);	//ランダムで出現位置を決める
+		float y_pos = Random.Range(-2.0f, 4.0f);		//ランダムで出現位置を決める
+		panelImageType = Random.Range(0, 2);		//ランダムで出現panelの絵柄を選出
+		panelType = Random.Range(0, gc.panelNumLimit);	//ランダムで出現panelを選出
+		spawnType = Random.Range(0, 3);				//ランダムで出現する位置を選出
+		timeOut = 1.5f;								//【仮】出現させたい時間間隔
+
+		Debug.Log("Limit" + gc.panelNumLimit);
 
 		//生成位置により、出現位置を設定する
 		switch(spawnType){

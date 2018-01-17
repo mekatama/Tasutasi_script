@@ -14,7 +14,8 @@ public class GameController : MonoBehaviour {
 	}
 
 	State state;
-	public int calcNum;				//計算させる数の個数
+	public int calcNum;				//計算させるpanelの個数
+	public int panelNumLimit;		//出現数字の上限
 	public int syutudaiNum;			//出題数
 	public int syutudaiNumNow;		//現在の出題数
 	public int[] panelNum;			//計算用配列
@@ -64,36 +65,42 @@ public class GameController : MonoBehaviour {
 			syutudaiNum = 5;			//出題数の設定
 			imageUse = 0;				//画像パネルの使用判定(0:数字のみ,1:ランダム,2:画像のみ)
 			sliderMaxValue = 20;		//スライダー入力の最大値
+			panelNumLimit = 3;			//出現数字の上限
 		}
 		if(SceneManager.GetActiveScene ().name == "Main2"){
 			calcNum = 3;				//計算する個数
 			syutudaiNum = 5;			//出題数の設定
 			imageUse = 0;				//画像パネルの使用判定(0:数字のみ,1:ランダム,2:画像のみ)
 			sliderMaxValue = 30;		//スライダー入力の最大値
+			panelNumLimit = 4;			//出現数字の上限
 		}
 		if(SceneManager.GetActiveScene ().name == "Main3"){
 			calcNum = 5;				//計算する個数
 			syutudaiNum = 5;			//出題数の設定
 			imageUse = 0;				//画像パネルの使用判定(0:数字のみ,1:ランダム,2:画像のみ)
 			sliderMaxValue = 50;		//スライダー入力の最大値
+			panelNumLimit = 5;			//出現数字の上限
 		}
 		if(SceneManager.GetActiveScene ().name == "Main4"){
 			calcNum = 2;				//計算する個数
 			syutudaiNum = 10;			//出題数の設定
 			imageUse = 0;				//画像パネルの使用判定(0:数字のみ,1:ランダム,2:画像のみ)
 			sliderMaxValue = 20;		//スライダー入力の最大値
+			panelNumLimit = 7;			//出現数字の上限
 		}
 		if(SceneManager.GetActiveScene ().name == "Main5"){
 			calcNum = 3;				//計算する個数
 			syutudaiNum = 10;			//出題数の設定
 			imageUse = 0;				//画像パネルの使用判定(0:数字のみ,1:ランダム,2:画像のみ)
 			sliderMaxValue = 30;		//スライダー入力の最大値
+			panelNumLimit = 8;			//出現数字の上限
 		}
 		if(SceneManager.GetActiveScene ().name == "Main6"){
 			calcNum = 5;				//計算する個数
 			syutudaiNum = 10;			//出題数の設定
 			imageUse = 0;				//画像パネルの使用判定(0:数字のみ,1:ランダム,2:画像のみ)
 			sliderMaxValue = 50;		//スライダー入力の最大値
+			panelNumLimit = 10;			//出現数字の上限
 		}
 		//数字と画像
 		if(SceneManager.GetActiveScene ().name == "Main7"){
@@ -101,36 +108,42 @@ public class GameController : MonoBehaviour {
 			syutudaiNum = 5;			//出題数の設定
 			imageUse = 1;				//画像パネルの使用判定(0:数字のみ,1:ランダム,2:画像のみ)
 			sliderMaxValue = 20;		//スライダー入力の最大値
+			panelNumLimit = 3;			//出現数字の上限
 		}
 		if(SceneManager.GetActiveScene ().name == "Main8"){
 			calcNum = 3;				//計算する個数
 			syutudaiNum = 5;			//出題数の設定
 			imageUse = 1;				//画像パネルの使用判定(0:数字のみ,1:ランダム,2:画像のみ)
 			sliderMaxValue = 30;		//スライダー入力の最大値
+			panelNumLimit = 4;			//出現数字の上限
 		}
 		if(SceneManager.GetActiveScene ().name == "Main9"){
 			calcNum = 5;				//計算する個数
 			syutudaiNum = 5;			//出題数の設定
 			imageUse = 1;				//画像パネルの使用判定(0:数字のみ,1:ランダム,2:画像のみ)
 			sliderMaxValue = 50;		//スライダー入力の最大値
+			panelNumLimit = 5;			//出現数字の上限
 		}
 		if(SceneManager.GetActiveScene ().name == "Main10"){
 			calcNum = 2;				//計算する個数
 			syutudaiNum = 10;			//出題数の設定
 			imageUse = 1;				//画像パネルの使用判定(0:数字のみ,1:ランダム,2:画像のみ)
 			sliderMaxValue = 20;		//スライダー入力の最大値
+			panelNumLimit = 7;			//出現数字の上限
 		}
 		if(SceneManager.GetActiveScene ().name == "Main11"){
 			calcNum = 3;				//計算する個数
 			syutudaiNum = 10;			//出題数の設定
 			imageUse = 1;				//画像パネルの使用判定(0:数字のみ,1:ランダム,2:画像のみ)
 			sliderMaxValue = 30;		//スライダー入力の最大値
+			panelNumLimit = 8;			//出現数字の上限
 		}
 		if(SceneManager.GetActiveScene ().name == "Main12"){
 			calcNum = 5;				//計算する個数
 			syutudaiNum = 10;			//出題数の設定
 			imageUse = 1;				//画像パネルの使用判定(0:数字のみ,1:ランダム,2:画像のみ)
 			sliderMaxValue = 50;		//スライダー入力の最大値
+			panelNumLimit = 10;			//出現数字の上限
 		}
 		Debug.Log("Stage:" + SceneManager.GetActiveScene ().name);
 
