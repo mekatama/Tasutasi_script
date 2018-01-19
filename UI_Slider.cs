@@ -26,7 +26,7 @@ public class UI_Slider : MonoBehaviour {
 		if (slider.value != level) {
 			level = slider.value;		//スライド値の変化判定用に再設定
 //			Debug.Log(slider.value);	//スライド値取得Log
-			slideNumText.text = slider.value.ToString("000");
+			slideNumText.text = slider.value.ToString("00");
 		}
 	}
 

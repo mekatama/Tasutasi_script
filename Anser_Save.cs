@@ -14,7 +14,7 @@ public class Anser_Save : MonoBehaviour {
 		GameController gc = gameController.GetComponent<GameController>();
 
 		anserNum = slider.value;		//スライド値を取得
-		text.text = anserNum.ToString("000");
+		text.text = anserNum.ToString("00");
 
 		//ここで、最後の集計用に正誤を保存するかもしれない
 		int i = gc.syutudaiNumNow - 1;
