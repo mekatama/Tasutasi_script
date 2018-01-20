@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour {
 	//ゲームステート
@@ -28,18 +29,19 @@ public class GameController : MonoBehaviour {
 	public int imageUse;			//画像パネルの使用flag(0:数字のみ,1:ランダム,2:画像のみ)
 	public int sliderMaxValue;		//スライダー入力の最大値
 
-	public float startTime = 1.5f;	//UIのSTARTを表示する時間
-	float time = 0f;				//UIのSTARTを表示する時間用の変数
-	public float resultTime = 1.5f;	//UIの〇✖を表示する時間
+	public float startTime = 1.5f;		//UIのSTARTを表示する時間
+	float time = 0f;					//UIのSTARTを表示する時間用の変数
+	public float resultTime = 1.5f;		//UIの〇✖を表示する時間
 	public float allResultTime = 3.0f;	//UIのリザルトを表示する時間
-	float time_marubatu = 0f;		//UIの〇✖を表示する時間用の変数
-	float time_finish = 0f;			//UIのFINISHを表示する時間用の変数
+	float time_marubatu = 0f;			//UIの〇✖を表示する時間用の変数
+	float time_finish = 0f;				//UIのFINISHを表示する時間用の変数
 
 	public Canvas startCamvas;		//Canvas_Start
 	public Canvas inputCamvas;		//Canvas_Input
 	public Canvas maruCamvas;		//Canvas_Maru
 	public Canvas batuCamvas;		//Canvas_Batu
 	public Canvas finishCamvas;		//Canvas_Finish
+	public Canvas playCamvas;		//Canvas_Play
 	public PanelSpawn ps;			//PanelSpawn1
 
 	AudioSource audioSource;		//AudioSourceコンポーネント取得用
@@ -55,6 +57,7 @@ public class GameController : MonoBehaviour {
 		maruCamvas.enabled = false;		//maruUI非表示
 		batuCamvas.enabled = false;		//batuUI非表示
 		finishCamvas.enabled = false;	//finishUI非表示
+		playCamvas.enabled = false;		//playUI非表示
 		audioSource = gameObject.GetComponent<AudioSource>();		//AudioSourceコンポーネント取得
 		seGo = false;												//SE再生用
 	
@@ -184,10 +187,12 @@ public class GameController : MonoBehaviour {
 				break;
 			//ゲーム中
 			case State.Play:
+				playCamvas.enabled = true;			//playUI表示
 				ps.panelSpawn = true;				//panel生成するフラグon
 				isAnser = false;
 				//panel出現数と削除数を比較
 				if(calcNum == panelDestroyNum){
+					playCamvas.enabled = false;		//playUI非表示
 					syutudaiNumNow += 1;			//現在の出題数をインクリメント
 					Debug.Log(syutudaiNumNow);
 					Anser();						//ステート変更
@@ -226,6 +231,7 @@ public class GameController : MonoBehaviour {
 				//指定時間で〇✖を非表示にする
 				time_marubatu += Time.deltaTime;
 				if(time_marubatu > resultTime){
+					playCamvas.enabled = false;		//playUI非表示
 					maruCamvas.enabled = false;		//maruUI非表示
 					batuCamvas.enabled = false;		//batuUI非表示
 					seGo = false;					//SE一回だけ処理終わり
@@ -307,5 +313,17 @@ public class GameController : MonoBehaviour {
 	void AllResult(){
 		Debug.Log("全部出題したはずー！");
 		state = State.AllResult;
+	}
+
+	//セレクト画面に戻るボタン用の制御関数
+	public void OnReturnSelectButtonClicked(){
+		//イロイロ初期化
+		panelDestroyNum = 0;			//panel削除数を初期化
+		ps.panelTotalNum = 0;			//panelの総数を初期化
+		time_marubatu = 0;				//〇✖表示時間を初期化
+		for(int i = 0; i < panelNum.Length; i++){
+			panelNum[i] = 0;			//配列に初期値0を入れておく
+		}
+		SceneManager.LoadScene("Select");	//シーンのロード
 	}
 }
