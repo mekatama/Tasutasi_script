@@ -28,6 +28,7 @@ public class GameController : MonoBehaviour {
 	public int seikaiNum;			//正解数
 	public int imageUse;			//画像パネルの使用flag(0:数字のみ,1:ランダム,2:画像のみ)
 	public int sliderMaxValue;		//スライダー入力の最大値
+	public float panelSpeed;		//panelのスピード
 
 	public float startTime = 1.5f;		//UIのSTARTを表示する時間
 	float time = 0f;					//UIのSTARTを表示する時間用の変数
@@ -69,6 +70,7 @@ public class GameController : MonoBehaviour {
 			imageUse = 0;				//画像パネルの使用判定(0:数字のみ,1:ランダム,2:画像のみ)
 			sliderMaxValue = 10;		//スライダー入力の最大値
 			panelNumLimit = 3;			//出現数字の上限
+			panelSpeed = -20.0f;		//panelのスピード
 		}
 		if(SceneManager.GetActiveScene ().name == "Main2"){
 			calcNum = 3;				//計算する個数
@@ -76,6 +78,7 @@ public class GameController : MonoBehaviour {
 			imageUse = 0;				//画像パネルの使用判定(0:数字のみ,1:ランダム,2:画像のみ)
 			sliderMaxValue = 15;		//スライダー入力の最大値
 			panelNumLimit = 4;			//出現数字の上限
+			panelSpeed = -20.0f;		//panelのスピード
 		}
 		if(SceneManager.GetActiveScene ().name == "Main3"){
 			calcNum = 5;				//計算する個数
@@ -83,6 +86,7 @@ public class GameController : MonoBehaviour {
 			imageUse = 0;				//画像パネルの使用判定(0:数字のみ,1:ランダム,2:画像のみ)
 			sliderMaxValue = 30;		//スライダー入力の最大値
 			panelNumLimit = 5;			//出現数字の上限
+			panelSpeed = -25.0f;		//panelのスピード
 		}
 		if(SceneManager.GetActiveScene ().name == "Main4"){
 			calcNum = 2;				//計算する個数
@@ -90,6 +94,7 @@ public class GameController : MonoBehaviour {
 			imageUse = 0;				//画像パネルの使用判定(0:数字のみ,1:ランダム,2:画像のみ)
 			sliderMaxValue = 15;		//スライダー入力の最大値
 			panelNumLimit = 7;			//出現数字の上限
+			panelSpeed = -25.0f;		//panelのスピード
 		}
 		if(SceneManager.GetActiveScene ().name == "Main5"){
 			calcNum = 3;				//計算する個数
@@ -97,6 +102,7 @@ public class GameController : MonoBehaviour {
 			imageUse = 0;				//画像パネルの使用判定(0:数字のみ,1:ランダム,2:画像のみ)
 			sliderMaxValue = 25;		//スライダー入力の最大値
 			panelNumLimit = 8;			//出現数字の上限
+			panelSpeed = -30.0f;		//panelのスピード
 		}
 		if(SceneManager.GetActiveScene ().name == "Main6"){
 			calcNum = 5;				//計算する個数
@@ -104,6 +110,7 @@ public class GameController : MonoBehaviour {
 			imageUse = 0;				//画像パネルの使用判定(0:数字のみ,1:ランダム,2:画像のみ)
 			sliderMaxValue = 50;		//スライダー入力の最大値
 			panelNumLimit = 10;			//出現数字の上限
+			panelSpeed = -30.0f;		//panelのスピード
 		}
 		//数字と画像
 		if(SceneManager.GetActiveScene ().name == "Main7"){
@@ -112,6 +119,7 @@ public class GameController : MonoBehaviour {
 			imageUse = 1;				//画像パネルの使用判定(0:数字のみ,1:ランダム,2:画像のみ)
 			sliderMaxValue = 10;		//スライダー入力の最大値
 			panelNumLimit = 3;			//出現数字の上限
+			panelSpeed = -20.0f;		//panelのスピード
 		}
 		if(SceneManager.GetActiveScene ().name == "Main8"){
 			calcNum = 3;				//計算する個数
@@ -119,6 +127,7 @@ public class GameController : MonoBehaviour {
 			imageUse = 1;				//画像パネルの使用判定(0:数字のみ,1:ランダム,2:画像のみ)
 			sliderMaxValue = 15;		//スライダー入力の最大値
 			panelNumLimit = 4;			//出現数字の上限
+			panelSpeed = -20.0f;		//panelのスピード
 		}
 		if(SceneManager.GetActiveScene ().name == "Main9"){
 			calcNum = 5;				//計算する個数
@@ -126,6 +135,7 @@ public class GameController : MonoBehaviour {
 			imageUse = 1;				//画像パネルの使用判定(0:数字のみ,1:ランダム,2:画像のみ)
 			sliderMaxValue = 30;		//スライダー入力の最大値
 			panelNumLimit = 5;			//出現数字の上限
+			panelSpeed = -25.0f;		//panelのスピード
 		}
 		if(SceneManager.GetActiveScene ().name == "Main10"){
 			calcNum = 2;				//計算する個数
@@ -133,6 +143,7 @@ public class GameController : MonoBehaviour {
 			imageUse = 1;				//画像パネルの使用判定(0:数字のみ,1:ランダム,2:画像のみ)
 			sliderMaxValue = 15;		//スライダー入力の最大値
 			panelNumLimit = 7;			//出現数字の上限
+			panelSpeed = -25.0f;		//panelのスピード
 		}
 		if(SceneManager.GetActiveScene ().name == "Main11"){
 			calcNum = 3;				//計算する個数
@@ -140,6 +151,7 @@ public class GameController : MonoBehaviour {
 			imageUse = 1;				//画像パネルの使用判定(0:数字のみ,1:ランダム,2:画像のみ)
 			sliderMaxValue = 25;		//スライダー入力の最大値
 			panelNumLimit = 8;			//出現数字の上限
+			panelSpeed = -30.0f;		//panelのスピード
 		}
 		if(SceneManager.GetActiveScene ().name == "Main12"){
 			calcNum = 5;				//計算する個数
@@ -147,6 +159,7 @@ public class GameController : MonoBehaviour {
 			imageUse = 1;				//画像パネルの使用判定(0:数字のみ,1:ランダム,2:画像のみ)
 			sliderMaxValue = 50;		//スライダー入力の最大値
 			panelNumLimit = 10;			//出現数字の上限
+			panelSpeed = -30.0f;		//panelのスピード
 		}
 		Debug.Log("Stage:" + SceneManager.GetActiveScene ().name);
 
