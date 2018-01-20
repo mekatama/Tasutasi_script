@@ -38,7 +38,7 @@ public class PanelSpawn : MonoBehaviour {
 		GameController gc = gameController.GetComponent<GameController>();
 
 		float x_pos = Random.Range(-2.0f, 2.0f);	//ランダムで出現位置を決める
-		float y_pos = Random.Range(-2.0f, 4.0f);		//ランダムで出現位置を決める
+		float y_pos = Random.Range(-2.0f, 2.8f);	//ランダムで出現位置を決める
 		panelImageType = Random.Range(0, 2);		//ランダムで出現panelの絵柄を選出
 		panelType = Random.Range(0, gc.panelNumLimit);	//ランダムで出現panelを選出
 		spawnType = Random.Range(0, 3);				//ランダムで出現する位置を選出
@@ -89,13 +89,13 @@ public class PanelSpawn : MonoBehaviour {
 		switch(spawnType){
 			case 0:													//upから生成
 				//panel生成時にaddforce
-				panelRigidbody.AddForce(new Vector2(0.0f, -50.0f));	//addforce
+				panelRigidbody.AddForce(new Vector2(0.0f, gc.panelSpeed - 20.0f));	//addforce
 				break;
 			case 1:													//leftから生成
-				panelRigidbody.AddForce(new Vector2(30.0f, 0.0f));	//addforce
+				panelRigidbody.AddForce(new Vector2(-1.0f * gc.panelSpeed, 0.0f));	//addforce
 				break;
 			case 2:													//rightから生成
-				panelRigidbody.AddForce(new Vector2(-30.0f, 0.0f));	//addforce
+				panelRigidbody.AddForce(new Vector2(gc.panelSpeed, 0.0f));	//addforce
 				break;
 		}
 
