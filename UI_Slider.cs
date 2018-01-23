@@ -9,11 +9,14 @@ public class UI_Slider : MonoBehaviour {
 	public Text slideNumText;	//Textコンポーネント取得用
 	public GameObject gameController;	//GameController取得
 
+	AudioSource audioSource;		//AudioSourceコンポーネント取得用
+	public AudioClip audioClipMove;	//Move SE
 
 	void Start () {
 		slider = GetComponent<Slider>();//Sliderコンポーネント取得
 		slider.value = 1;				//スライド値の初期化
 		level = slider.value;			//スライド値の変化判定用
+		audioSource = gameObject.GetComponent<AudioSource>();		//AudioSourceコンポーネント取得
 
 	}
 	
@@ -32,8 +35,9 @@ public class UI_Slider : MonoBehaviour {
 
 	//Sliderの値が変わる度にスクリプトのメソッドを呼び出す
     public void MoveSlider(){
-		//ここ、使用するかどうかは未定
-//		Debug.Log("Moving");
+		//スライド動かすとSEが鳴る
+		audioSource.clip = audioClipMove;	//SE決定
+		audioSource.Play ();				//SE再生
     }
 
 }
