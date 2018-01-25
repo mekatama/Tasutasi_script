@@ -29,6 +29,8 @@ public class GameController : MonoBehaviour {
 	public int imageUse;			//画像パネルの使用flag(0:数字のみ,1:ランダム,2:画像のみ)
 	public int sliderMaxValue;		//スライダー入力の最大値
 	public float panelSpeed;		//panelのスピード
+	public int panelRotateSpeed;	//panelの回転speed。0だと回転しない
+	public int panelRotateFlag;		//panelの回転するかどうかランダム数で判定する
 
 	public float startTime = 1.5f;		//UIのSTARTを表示する時間
 	float time = 0f;					//UIのSTARTを表示する時間用の変数
@@ -71,6 +73,8 @@ public class GameController : MonoBehaviour {
 			sliderMaxValue = 10;		//スライダー入力の最大値
 			panelNumLimit = 3;			//出現数字の上限
 			panelSpeed = -20.0f;		//panelのスピード
+			panelRotateSpeed = 0;		//panelの回転設定
+			panelRotateFlag = 4;		//panelの回転ランダムflag
 		}
 		if(SceneManager.GetActiveScene ().name == "Main2"){
 			calcNum = 3;				//計算する個数
@@ -79,6 +83,8 @@ public class GameController : MonoBehaviour {
 			sliderMaxValue = 15;		//スライダー入力の最大値
 			panelNumLimit = 4;			//出現数字の上限
 			panelSpeed = -20.0f;		//panelのスピード
+			panelRotateSpeed = 0;		//panelの回転設定
+			panelRotateFlag = 4;		//panelの回転ランダムflag
 		}
 		if(SceneManager.GetActiveScene ().name == "Main3"){
 			calcNum = 5;				//計算する個数
@@ -87,6 +93,8 @@ public class GameController : MonoBehaviour {
 			sliderMaxValue = 30;		//スライダー入力の最大値
 			panelNumLimit = 5;			//出現数字の上限
 			panelSpeed = -25.0f;		//panelのスピード
+			panelRotateSpeed = 0;		//panelの回転設定
+			panelRotateFlag = 4;		//panelの回転ランダムflag
 		}
 		if(SceneManager.GetActiveScene ().name == "Main4"){
 			calcNum = 2;				//計算する個数
@@ -95,6 +103,8 @@ public class GameController : MonoBehaviour {
 			sliderMaxValue = 15;		//スライダー入力の最大値
 			panelNumLimit = 7;			//出現数字の上限
 			panelSpeed = -25.0f;		//panelのスピード
+			panelRotateSpeed = 0;		//panelの回転設定
+			panelRotateFlag = 4;		//panelの回転ランダムflag
 		}
 		if(SceneManager.GetActiveScene ().name == "Main5"){
 			calcNum = 3;				//計算する個数
@@ -103,6 +113,8 @@ public class GameController : MonoBehaviour {
 			sliderMaxValue = 25;		//スライダー入力の最大値
 			panelNumLimit = 8;			//出現数字の上限
 			panelSpeed = -30.0f;		//panelのスピード
+			panelRotateSpeed = 0;		//panelの回転設定
+			panelRotateFlag = 4;		//panelの回転ランダムflag
 		}
 		if(SceneManager.GetActiveScene ().name == "Main6"){
 			calcNum = 5;				//計算する個数
@@ -111,6 +123,8 @@ public class GameController : MonoBehaviour {
 			sliderMaxValue = 50;		//スライダー入力の最大値
 			panelNumLimit = 10;			//出現数字の上限
 			panelSpeed = -30.0f;		//panelのスピード
+			panelRotateSpeed = 0;		//panelの回転設定
+			panelRotateFlag = 4;		//panelの回転ランダムflag
 		}
 		//数字と画像
 		if(SceneManager.GetActiveScene ().name == "Main7"){
@@ -120,6 +134,8 @@ public class GameController : MonoBehaviour {
 			sliderMaxValue = 10;		//スライダー入力の最大値
 			panelNumLimit = 3;			//出現数字の上限
 			panelSpeed = -20.0f;		//panelのスピード
+			panelRotateSpeed = 0;		//panelの回転設定
+			panelRotateFlag = 4;		//panelの回転ランダムflag
 		}
 		if(SceneManager.GetActiveScene ().name == "Main8"){
 			calcNum = 3;				//計算する個数
@@ -128,6 +144,8 @@ public class GameController : MonoBehaviour {
 			sliderMaxValue = 15;		//スライダー入力の最大値
 			panelNumLimit = 4;			//出現数字の上限
 			panelSpeed = -20.0f;		//panelのスピード
+			panelRotateSpeed = 0;		//panelの回転設定
+			panelRotateFlag = 4;		//panelの回転ランダムflag
 		}
 		if(SceneManager.GetActiveScene ().name == "Main9"){
 			calcNum = 5;				//計算する個数
@@ -136,6 +154,8 @@ public class GameController : MonoBehaviour {
 			sliderMaxValue = 30;		//スライダー入力の最大値
 			panelNumLimit = 5;			//出現数字の上限
 			panelSpeed = -25.0f;		//panelのスピード
+			panelRotateSpeed = 0;		//panelの回転設定
+			panelRotateFlag = 4;		//panelの回転ランダムflag
 		}
 		if(SceneManager.GetActiveScene ().name == "Main10"){
 			calcNum = 2;				//計算する個数
@@ -144,6 +164,8 @@ public class GameController : MonoBehaviour {
 			sliderMaxValue = 15;		//スライダー入力の最大値
 			panelNumLimit = 7;			//出現数字の上限
 			panelSpeed = -25.0f;		//panelのスピード
+			panelRotateSpeed = 0;		//panelの回転設定
+			panelRotateFlag = 4;		//panelの回転ランダムflag
 		}
 		if(SceneManager.GetActiveScene ().name == "Main11"){
 			calcNum = 3;				//計算する個数
@@ -152,6 +174,8 @@ public class GameController : MonoBehaviour {
 			sliderMaxValue = 25;		//スライダー入力の最大値
 			panelNumLimit = 8;			//出現数字の上限
 			panelSpeed = -30.0f;		//panelのスピード
+			panelRotateSpeed = 0;		//panelの回転設定
+			panelRotateFlag = 4;		//panelの回転ランダムflag
 		}
 		if(SceneManager.GetActiveScene ().name == "Main12"){
 			calcNum = 5;				//計算する個数
@@ -160,6 +184,8 @@ public class GameController : MonoBehaviour {
 			sliderMaxValue = 50;		//スライダー入力の最大値
 			panelNumLimit = 10;			//出現数字の上限
 			panelSpeed = -30.0f;		//panelのスピード
+			panelRotateSpeed = 0;		//panelの回転設定
+			panelRotateFlag = 4;		//panelの回転ランダムflag
 		}
 		Debug.Log("Stage:" + SceneManager.GetActiveScene ().name);
 
