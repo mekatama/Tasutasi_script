@@ -4,20 +4,19 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class UI_Slider : MonoBehaviour {
-	private Slider slider;		//Sliderコンポーネント取得用
-	private float level;		//スライド値を入れる用
-	public Text slideNumText;	//Textコンポーネント取得用
+	private Slider slider;				//Sliderコンポーネント取得用
+	private float level;				//スライド値を入れる用
+	public Text slideNumText;			//Textコンポーネント取得用
 	public GameObject gameController;	//GameController取得
 
-	AudioSource audioSource;		//AudioSourceコンポーネント取得用
-	public AudioClip audioClipMove;	//Move SE
+	AudioSource audioSource;			//AudioSourceコンポーネント取得用
+	public AudioClip audioClipMove;		//Move SE
 
 	void Start () {
 		slider = GetComponent<Slider>();//Sliderコンポーネント取得
 		slider.value = 1;				//スライド値の初期化
 		level = slider.value;			//スライド値の変化判定用
 		audioSource = gameObject.GetComponent<AudioSource>();		//AudioSourceコンポーネント取得
-
 	}
 	
 	void Update () {
@@ -28,7 +27,6 @@ public class UI_Slider : MonoBehaviour {
 		//スライド値が変化したら
 		if (slider.value != level) {
 			level = slider.value;		//スライド値の変化判定用に再設定
-//			Debug.Log(slider.value);	//スライド値取得Log
 			slideNumText.text = slider.value.ToString("00");
 		}
 	}
