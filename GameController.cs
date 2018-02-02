@@ -31,6 +31,7 @@ public class GameController : MonoBehaviour {
 	public float panelSpeed;		//panelのスピード
 	public int panelRotateSpeed;	//panelの回転speed。0だと回転しない
 	public int panelRotateFlag;		//panelの回転するかどうかランダム数で判定する
+	public bool isKamifubuki;		//紙吹雪エフェクトフラグ
 
 	public float startTime = 1.5f;		//UIのSTARTを表示する時間
 	float time = 0f;					//UIのSTARTを表示する時間用の変数
@@ -63,6 +64,7 @@ public class GameController : MonoBehaviour {
 		playCamvas.enabled = false;		//playUI非表示
 		audioSource = gameObject.GetComponent<AudioSource>();		//AudioSourceコンポーネント取得
 		seGo = false;												//SE再生用
+		isKamifubuki = false;			//effectのフラグ初期化
 	
 		//各ステージの固有値初期設定
 		//数字のみ
@@ -189,7 +191,6 @@ public class GameController : MonoBehaviour {
 		}
 		Debug.Log("Stage:" + SceneManager.GetActiveScene ().name);
 
-
 		//配列の初期化
 		panelNum = new int[calcNum];
 		seigo = new int[syutudaiNum];
@@ -299,6 +300,7 @@ public class GameController : MonoBehaviour {
 				//正解数でSEを鳴らしわける
 				if(seikaiNum != 0){
 					if(seGo == false){
+						isKamifubuki = true;			//紙吹雪エフェクトon
 						audioSource.clip = audioClipOk;	//SE決定
 						audioSource.Play ();			//SE再生
 						seGo = true;
