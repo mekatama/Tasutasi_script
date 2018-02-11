@@ -68,7 +68,8 @@ public class GameController : MonoBehaviour {
 	
 		//各ステージの固有値初期設定
 		//数字のみ
-		if(SceneManager.GetActiveScene ().name == "Main1"){
+//		if(SceneManager.GetActiveScene ().name == "Main1"){
+		if(SceneManager.GetActiveScene ().name == "Main1yoko"){
 			calcNum = 2;				//計算する個数
 			syutudaiNum = 5;			//出題数の設定
 			imageUse = 0;				//画像パネルの使用判定(0:数字のみ,1:ランダム,2:画像のみ)
@@ -232,7 +233,7 @@ public class GameController : MonoBehaviour {
 				isAnser = false;
 				//panel出現数と削除数を比較
 				if(calcNum == panelDestroyNum){
-					playCamvas.enabled = false;		//playUI非表示
+//					playCamvas.enabled = false;		//playUI非表示
 					syutudaiNumNow += 1;			//現在の出題数をインクリメント
 					Debug.Log(syutudaiNumNow);
 					Anser();						//ステート変更
@@ -244,6 +245,7 @@ public class GameController : MonoBehaviour {
 				inputCamvas.enabled = true;			//InputUI表示
 				//解答したら、以下を呼び出せば良さそう
 				if(isAnser == true){
+					playCamvas.enabled = false;		//playUI非表示
 					Result();	//ステート変更
 					Debug.Log("State.Result");
 				}
@@ -316,7 +318,7 @@ public class GameController : MonoBehaviour {
 				if(time_finish > allResultTime){
 					finishCamvas.enabled = false;		//finishUI非表示
 					seGo = false;
-					SceneManager.LoadScene("Select");	//シーンのロード
+					SceneManager.LoadScene("Select_yoko");	//シーンのロード
 				}
 				break;
 		}
