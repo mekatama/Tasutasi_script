@@ -37,8 +37,10 @@ public class PanelSpawn : MonoBehaviour {
 		//gcって仮の変数にGameControllerのコンポーネントを入れる
 		GameController gc = gameController.GetComponent<GameController>();
 
-		float x_pos = Random.Range(-2.0f, 2.0f);	//ランダムで出現位置を決める
-		float y_pos = Random.Range(-2.0f, 2.8f);	//ランダムで出現位置を決める
+		float x_pos = Random.Range(-5.0f, 5.0f);	//ランダムで出現位置を決める
+		float y_pos = Random.Range(-3.5f, 2.5f);	//ランダムで出現位置を決める
+//		float x_pos = Random.Range(-2.0f, 2.0f);	//ランダムで出現位置を決める
+//		float y_pos = Random.Range(-2.0f, 2.8f);	//ランダムで出現位置を決める
 		panelImageType = Random.Range(0, 2);		//ランダムで出現panelの絵柄を選出
 		panelType = Random.Range(0, gc.panelNumLimit);	//ランダムで出現panelを選出
 		spawnType = Random.Range(0, 3);				//ランダムで出現する位置を選出
@@ -49,13 +51,16 @@ public class PanelSpawn : MonoBehaviour {
 		//生成位置により、出現位置を設定する
 		switch(spawnType){
 			case 0:				//upから生成
-				y_pos = 5.5f;
+				y_pos = 6.0f;
+//				y_pos = 5.5f;
 				break;
 			case 1:				//leftから生成
-				x_pos = -2.5f;
+				x_pos = -9.5f;
+//				x_pos = -2.5f;
 				break;
 			case 2:				//rightから生成
-				x_pos = 2.5f;
+				x_pos = 9.5f;
+//				x_pos = 2.5f;
 				break;
 		}
 
@@ -92,10 +97,12 @@ public class PanelSpawn : MonoBehaviour {
 				panelRigidbody.AddForce(new Vector2(0.0f, gc.panelSpeed - 20.0f));	//addforce
 				break;
 			case 1:													//leftから生成
-				panelRigidbody.AddForce(new Vector2(-1.0f * gc.panelSpeed, 0.0f));	//addforce
+				panelRigidbody.AddForce(new Vector2(-2.8f * gc.panelSpeed, 0.0f));	//addforce
+//				panelRigidbody.AddForce(new Vector2(-1.0f * gc.panelSpeed, 0.0f));	//addforce
 				break;
 			case 2:													//rightから生成
-				panelRigidbody.AddForce(new Vector2(gc.panelSpeed, 0.0f));	//addforce
+				panelRigidbody.AddForce(new Vector2( 2.8f * gc.panelSpeed, 0.0f));	//addforce
+//				panelRigidbody.AddForce(new Vector2(gc.panelSpeed, 0.0f));	//addforce
 				break;
 		}
 
