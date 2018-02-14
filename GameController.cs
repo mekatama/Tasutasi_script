@@ -32,6 +32,9 @@ public class GameController : MonoBehaviour {
 	public int panelRotateSpeed;	//panelの回転speed。0だと回転しない
 	public int panelRotateFlag;		//panelの回転するかどうかランダム数で判定する
 	public bool isKamifubuki;		//紙吹雪エフェクトフラグ
+	public float timePlaying;		//play時間
+	public float timeClear;			//Clearした時間
+	public float timeBest;			//ハイスコア時間
 
 	public float startTime = 1.5f;		//UIのSTARTを表示する時間
 	float time = 0f;					//UIのSTARTを表示する時間用の変数
@@ -65,6 +68,11 @@ public class GameController : MonoBehaviour {
 		audioSource = gameObject.GetComponent<AudioSource>();		//AudioSourceコンポーネント取得
 		seGo = false;												//SE再生用
 		isKamifubuki = false;			//effectのフラグ初期化
+
+		//ハイスコアの初期値チェック
+		if(timeBest == 0){				//何もデータが無かったら
+			timeBest = 120.0f;			//ハイスコアの初期値を代入
+		}
 	
 		//各ステージの固有値初期設定
 		//数字のみ
@@ -280,6 +288,8 @@ public class GameController : MonoBehaviour {
 
 					//ここで出題数に達しているか判定なのかな
 					if(syutudaiNumNow == syutudaiNum){
+						timeClear = timePlaying;	//全問解答に要した時間
+//						Debug.Log("CLEAR TIME:" + timeClear);
 						//最後の結果画面のstateにここから移動する
 						AllResult();	//ステート変更
 					}else{
@@ -299,8 +309,25 @@ public class GameController : MonoBehaviour {
 			case State.AllResult:
 				finishCamvas.enabled = true;			//finishUI表示
 				time_finish += Time.deltaTime;
+				Debug.Log("正解数" + seikaiNum);
+				Debug.Log("出題数" + syutudaiNum);
+				Debug.Log("HighScore:" + timeBest);
+				Debug.Log("ClearScore:" + timeClear);
+				
 				//正解数でSEを鳴らしわける
-				if(seikaiNum != 0){
+				if(seikaiNum == syutudaiNum){
+					if(seGo == false){
+						//ハイスコア判定
+						if(timeBest > timeClear){
+							timeBest = timeClear;		//ハイスコア更新
+							Debug.Log("HighScore更新:" + timeBest);
+						}
+						isKamifubuki = true;			//紙吹雪エフェクトon
+						audioSource.clip = audioClipOk;	//SE決定
+						audioSource.Play ();			//SE再生
+						seGo = true;
+					}
+				}else if(seikaiNum != 0){
 					if(seGo == false){
 						isKamifubuki = true;			//紙吹雪エフェクトon
 						audioSource.clip = audioClipOk;	//SE決定
@@ -325,7 +352,8 @@ public class GameController : MonoBehaviour {
 	}
 
 	void Update () {
-		//未使用
+		//play時間チェック
+		timePlaying += Time.deltaTime;	//play時間の保存
 	}
 
 	void Ready(){
