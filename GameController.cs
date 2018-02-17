@@ -35,6 +35,7 @@ public class GameController : MonoBehaviour {
 	public float timePlaying;		//play時間
 	public float timeClear;			//Clearした時間
 	public float timeBest;			//ハイスコア時間
+	public bool isTimeCount;		//timeのカウント開始flag
 
 	public float startTime = 1.5f;		//UIのSTARTを表示する時間
 	float time = 0f;					//UIのSTARTを表示する時間用の変数
@@ -49,6 +50,7 @@ public class GameController : MonoBehaviour {
 	public Canvas batuCamvas;		//Canvas_Batu
 	public Canvas finishCamvas;		//Canvas_Finish
 	public Canvas playCamvas;		//Canvas_Play
+	public Canvas timeCamvas;		//Canvas_Time
 	public PanelSpawn ps;			//PanelSpawn1
 
 	AudioSource audioSource;		//AudioSourceコンポーネント取得用
@@ -65,21 +67,19 @@ public class GameController : MonoBehaviour {
 		batuCamvas.enabled = false;		//batuUI非表示
 		finishCamvas.enabled = false;	//finishUI非表示
 		playCamvas.enabled = false;		//playUI非表示
+		timeCamvas.enabled = true;		//TimeUI表示
 		audioSource = gameObject.GetComponent<AudioSource>();		//AudioSourceコンポーネント取得
 		seGo = false;												//SE再生用
 		isKamifubuki = false;			//effectのフラグ初期化
+		isTimeCount = false;
 
-		//ハイスコアの初期値チェック
-		if(timeBest == 0){				//何もデータが無かったら
-			timeBest = 120.0f;			//ハイスコアの初期値を代入
-		}
-	
+
 		//各ステージの固有値初期設定
 		//数字のみ
 //		if(SceneManager.GetActiveScene ().name == "Main1"){
 		if(SceneManager.GetActiveScene ().name == "Main1yoko"){
 			calcNum = 2;				//計算する個数
-			syutudaiNum = 5;			//出題数の設定
+			syutudaiNum = 3;			//出題数の設定
 			imageUse = 0;				//画像パネルの使用判定(0:数字のみ,1:ランダム,2:画像のみ)
 			sliderMaxValue = 10;		//スライダー入力の最大値
 			panelNumLimit = 3;			//出現数字の上限
@@ -238,7 +238,8 @@ public class GameController : MonoBehaviour {
 			case State.Play:
 				playCamvas.enabled = true;			//playUI表示
 				ps.panelSpawn = true;				//panel生成するフラグon
-				isAnser = false;
+				isAnser = false;					//
+				isTimeCount = true;					//timeカウント開始
 				//panel出現数と削除数を比較
 				if(calcNum == panelDestroyNum){
 //					playCamvas.enabled = false;		//playUI非表示
@@ -260,6 +261,7 @@ public class GameController : MonoBehaviour {
 				break;
 			//〇✖表示
 			case State.Result:
+				isTimeCount = false;		//timeカウント停止
 				//ここで〇✖の表示をする
 				if(isSeikai){
 					maruCamvas.enabled = true;			//maruUI表示
@@ -288,6 +290,7 @@ public class GameController : MonoBehaviour {
 
 					//ここで出題数に達しているか判定なのかな
 					if(syutudaiNumNow == syutudaiNum){
+//						isTimeCount = false;		//timeカウント停止
 						timeClear = timePlaying;	//全問解答に要した時間
 //						Debug.Log("CLEAR TIME:" + timeClear);
 						//最後の結果画面のstateにここから移動する
@@ -307,20 +310,28 @@ public class GameController : MonoBehaviour {
 				break;
 			//全問解答
 			case State.AllResult:
+				timeCamvas.enabled = false;				//TimeUI非表示
 				finishCamvas.enabled = true;			//finishUI表示
 				time_finish += Time.deltaTime;
-				Debug.Log("正解数" + seikaiNum);
-				Debug.Log("出題数" + syutudaiNum);
-				Debug.Log("HighScore:" + timeBest);
-				Debug.Log("ClearScore:" + timeClear);
 				
 				//正解数でSEを鳴らしわける
 				if(seikaiNum == syutudaiNum){
 					if(seGo == false){
+						Debug.Log("正解数" + seikaiNum);
+						Debug.Log("出題数" + syutudaiNum);
+		//				Debug.Log("HighScore:" + timeBest);
+						Debug.Log("ClearScore:" + timeClear);
+
 						//ハイスコア判定
-						if(timeBest > timeClear){
+						if(PlayerPrefs.GetFloat("HighScore1") > timeClear){
 							timeBest = timeClear;		//ハイスコア更新
 							Debug.Log("HighScore更新:" + timeBest);
+
+							//【予定】各ステージ毎にセーブする
+							PlayerPrefs.SetFloat("HighScore1", timeBest);
+
+						}else{
+							Debug.Log("HighScore更新NG:");
 						}
 						isKamifubuki = true;			//紙吹雪エフェクトon
 						audioSource.clip = audioClipOk;	//SE決定
@@ -353,7 +364,9 @@ public class GameController : MonoBehaviour {
 
 	void Update () {
 		//play時間チェック
-		timePlaying += Time.deltaTime;	//play時間の保存
+		if(isTimeCount == true){
+			timePlaying += Time.deltaTime;	//play時間の保存
+		}
 	}
 
 	void Ready(){
@@ -395,6 +408,7 @@ public class GameController : MonoBehaviour {
 		for(int i = 0; i < panelNum.Length; i++){
 			panelNum[i] = 0;			//配列に初期値0を入れておく
 		}
-		SceneManager.LoadScene("Select");	//シーンのロード
+		SceneManager.LoadScene("Select_yoko");	//シーンのロード
+//		SceneManager.LoadScene("Select");	//シーンのロード
 	}
 }
