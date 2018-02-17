@@ -5,10 +5,27 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class StageSelectController : MonoBehaviour {
+//	GameObject gameController;			//検索したオブジェクト入れる用
+
+	void Start () {
+		//ハイスコアの初期値チェック
+		if(PlayerPrefs.GetFloat("HighScore1") == 0f){	//何もデータが無かったら
+			PlayerPrefs.SetFloat("HighScore1", 120.0f);	//初期値を代入
+		}
+		Debug.Log("HighScore1:" + PlayerPrefs.GetFloat("HighScore1"));
+/*
+		gameController = GameObject.FindWithTag ("GameController");	//GameControllerオブジェクトを探す
+
+		//gcって仮の変数にGameControllerのコンポーネントを入れる
+		GameController gc = gameController.GetComponent<GameController>();
+		Debug.Log("Hiscore:" + gc.timeBest);
+*/
+	}
 
 	//ステージ用の制御関数
 	public void OnStage01ButtonClicked(){
-		SceneManager.LoadScene("Main1");	//シーンのロード
+//		SceneManager.LoadScene("Main1");	//シーンのロード
+		SceneManager.LoadScene("Main1yoko");	//シーンのロード
 	}
 	public void OnStage02ButtonClicked(){
 		SceneManager.LoadScene("Main2");	//シーンのロード
