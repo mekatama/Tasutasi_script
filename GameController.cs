@@ -51,6 +51,7 @@ public class GameController : MonoBehaviour {
 	public Canvas finishCamvas;		//Canvas_Finish
 	public Canvas playCamvas;		//Canvas_Play
 	public Canvas timeCamvas;		//Canvas_Time
+	public Canvas highScoreCamvas;	//Canvas_HighScore
 	public PanelSpawn ps;			//PanelSpawn1
 
 	AudioSource audioSource;		//AudioSourceコンポーネント取得用
@@ -67,6 +68,7 @@ public class GameController : MonoBehaviour {
 		batuCamvas.enabled = false;		//batuUI非表示
 		finishCamvas.enabled = false;	//finishUI非表示
 		playCamvas.enabled = false;		//playUI非表示
+		highScoreCamvas.enabled = false;//highScoreUI非表示
 		timeCamvas.enabled = true;		//TimeUI表示
 		audioSource = gameObject.GetComponent<AudioSource>();		//AudioSourceコンポーネント取得
 		seGo = false;												//SE再生用
@@ -324,7 +326,8 @@ public class GameController : MonoBehaviour {
 
 						//ハイスコア判定
 						if(PlayerPrefs.GetFloat("HighScore1") > timeClear){
-							timeBest = timeClear;		//ハイスコア更新
+							highScoreCamvas.enabled = true;	//highScoreUI表示
+							timeBest = timeClear;			//ハイスコア更新
 							Debug.Log("HighScore更新:" + timeBest);
 
 							//【予定】各ステージ毎にセーブする
