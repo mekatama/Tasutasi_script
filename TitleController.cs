@@ -15,12 +15,12 @@ public class TitleController : MonoBehaviour {
 
 	//セレクト画面用の制御関数
 	public void OnSelectButtonClicked(){
-		SceneManager.LoadScene("Select");	//シーンのロード
+		SceneManager.LoadScene("Select_yoko");	//シーンのロード
 	}
 
 	//遊び方ボタン用の制御関数
 	public void OnHowToPlayButtonClicked(){
-		SceneManager.LoadScene("HowToPlay");	//シーンのロード
+		SceneManager.LoadScene("HowToPlay_yoko");	//シーンのロード
 	}
 
 	//タイトルに戻るボタン用の制御関数
@@ -32,5 +32,10 @@ public class TitleController : MonoBehaviour {
 	public void OnExitButtonClicked(){
 		Application.Quit();
 		Debug.Log("exit");	
+	}
+
+	//Debug用ハイスコアリセットボタン
+	public void OnResetButtonClicked(){
+		PlayerPrefs.SetFloat("HighScore1", 0.0f);
 	}
 }
