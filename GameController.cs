@@ -63,6 +63,7 @@ public class GameController : MonoBehaviour {
 
 
 	void Start () {
+		startCamvas.enabled = true;		//StartUI表示
 		inputCamvas.enabled = false;	//InputUI非表示
 		maruCamvas.enabled = false;		//maruUI非表示
 		batuCamvas.enabled = false;		//batuUI非表示
