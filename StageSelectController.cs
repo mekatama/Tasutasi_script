@@ -5,21 +5,23 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class StageSelectController : MonoBehaviour {
-//	GameObject gameController;			//検索したオブジェクト入れる用
 
 	void Start () {
 		//ハイスコアの初期値チェック
-		if(PlayerPrefs.GetFloat("HighScore1") == 0f){	//何もデータが無かったら
-			PlayerPrefs.SetFloat("HighScore1", 120.0f);	//初期値を代入
-		}
-		Debug.Log("HighScore1:" + PlayerPrefs.GetFloat("HighScore1"));
-/*
-		gameController = GameObject.FindWithTag ("GameController");	//GameControllerオブジェクトを探す
-
-		//gcって仮の変数にGameControllerのコンポーネントを入れる
-		GameController gc = gameController.GetComponent<GameController>();
-		Debug.Log("Hiscore:" + gc.timeBest);
-*/
+		//何もデータが無かったら初期値を代入
+		if(PlayerPrefs.GetFloat("HighScore1") == 0f){	PlayerPrefs.SetFloat("HighScore1", 120.0f);	}
+		if(PlayerPrefs.GetFloat("HighScore2") == 0f){	PlayerPrefs.SetFloat("HighScore2", 120.0f);	}
+		if(PlayerPrefs.GetFloat("HighScore3") == 0f){	PlayerPrefs.SetFloat("HighScore3", 120.0f);	}
+		if(PlayerPrefs.GetFloat("HighScore4") == 0f){	PlayerPrefs.SetFloat("HighScore4", 120.0f);	}
+		if(PlayerPrefs.GetFloat("HighScore5") == 0f){	PlayerPrefs.SetFloat("HighScore5", 120.0f);	}
+		if(PlayerPrefs.GetFloat("HighScore6") == 0f){	PlayerPrefs.SetFloat("HighScore6", 120.0f);	}
+		if(PlayerPrefs.GetFloat("HighScore7") == 0f){	PlayerPrefs.SetFloat("HighScore7", 120.0f);	}
+		if(PlayerPrefs.GetFloat("HighScore8") == 0f){	PlayerPrefs.SetFloat("HighScore8", 120.0f);	}
+		if(PlayerPrefs.GetFloat("HighScore9") == 0f){	PlayerPrefs.SetFloat("HighScore9", 120.0f);	}
+		if(PlayerPrefs.GetFloat("HighScore10") == 0f){	PlayerPrefs.SetFloat("HighScore10", 120.0f);}
+		if(PlayerPrefs.GetFloat("HighScore11") == 0f){	PlayerPrefs.SetFloat("HighScore11", 120.0f);}
+		if(PlayerPrefs.GetFloat("HighScore12") == 0f){	PlayerPrefs.SetFloat("HighScore12", 120.0f);}
+//		Debug.Log("HighScore1:" + PlayerPrefs.GetFloat("HighScore1"));
 	}
 
 	//ステージ用の制御関数
@@ -43,7 +45,8 @@ public class StageSelectController : MonoBehaviour {
 		SceneManager.LoadScene("Main6");	//シーンのロード
 	}
 	public void OnStage07ButtonClicked(){
-		SceneManager.LoadScene("Main7");	//シーンのロード
+//		SceneManager.LoadScene("Main7");	//シーンのロード
+		SceneManager.LoadScene("Main7yoko");	//シーンのロード
 	}
 	public void OnStage08ButtonClicked(){
 		SceneManager.LoadScene("Main8");	//シーンのロード
