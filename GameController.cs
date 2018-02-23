@@ -141,9 +141,10 @@ public class GameController : MonoBehaviour {
 			panelRotateFlag = 4;		//panelの回転ランダムflag
 		}
 		//数字と画像
-		if(SceneManager.GetActiveScene ().name == "Main7"){
+//		if(SceneManager.GetActiveScene ().name == "Main7"){
+		if(SceneManager.GetActiveScene ().name == "Main7yoko"){
 			calcNum = 2;				//計算する個数
-			syutudaiNum = 5;			//出題数の設定
+			syutudaiNum = 3;			//出題数の設定
 			imageUse = 1;				//画像パネルの使用判定(0:数字のみ,1:ランダム,2:画像のみ)
 			sliderMaxValue = 10;		//スライダー入力の最大値
 			panelNumLimit = 3;			//出現数字の上限
@@ -320,23 +321,20 @@ public class GameController : MonoBehaviour {
 				//正解数でSEを鳴らしわける
 				if(seikaiNum == syutudaiNum){
 					if(seGo == false){
-						Debug.Log("正解数" + seikaiNum);
-						Debug.Log("出題数" + syutudaiNum);
-		//				Debug.Log("HighScore:" + timeBest);
-						Debug.Log("ClearScore:" + timeClear);
-
-						//ハイスコア判定
-						if(PlayerPrefs.GetFloat("HighScore1") > timeClear){
-							highScoreCamvas.enabled = true;	//highScoreUI表示
-							timeBest = timeClear;			//ハイスコア更新
-							Debug.Log("HighScore更新:" + timeBest);
-
-							//【予定】各ステージ毎にセーブする
-							PlayerPrefs.SetFloat("HighScore1", timeBest);
-
-						}else{
-							Debug.Log("HighScore更新NG:");
+						//各ステージのハイスコア判定
+						if(SceneManager.GetActiveScene ().name == "Main1yoko"){
+							if(PlayerPrefs.GetFloat("HighScore1") > timeClear){
+								HighScore();					//ハイスコア処理関数
+								PlayerPrefs.SetFloat("HighScore1", timeBest);
+							}
 						}
+						if(SceneManager.GetActiveScene ().name == "Main7yoko"){
+							if(PlayerPrefs.GetFloat("HighScore7") > timeClear){
+								HighScore();					//ハイスコア処理関数
+								PlayerPrefs.SetFloat("HighScore7", timeBest);
+							}
+						}
+
 						isKamifubuki = true;			//紙吹雪エフェクトon
 						audioSource.clip = audioClipOk;	//SE決定
 						audioSource.Play ();			//SE再生
@@ -401,6 +399,12 @@ public class GameController : MonoBehaviour {
 	void AllResult(){
 		Debug.Log("全部出題したはずー！");
 		state = State.AllResult;
+	}
+
+	void HighScore(){
+		highScoreCamvas.enabled = true;			//highScoreUI表示
+		timeBest = timeClear;					//ハイスコア更新
+		Debug.Log("HighScore更新:" + timeBest);
 	}
 
 	//セレクト画面に戻るボタン用の制御関数
