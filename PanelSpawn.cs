@@ -46,7 +46,7 @@ public class PanelSpawn : MonoBehaviour {
 		spawnType = Random.Range(0, 3);				//ランダムで出現する位置を選出
 		timeOut = 1.5f;								//【仮】出現させたい時間間隔
 
-		Debug.Log("Limit" + gc.panelNumLimit);
+//		Debug.Log("Limit" + gc.panelNumLimit);
 
 		//生成位置により、出現位置を設定する
 		switch(spawnType){
@@ -85,7 +85,7 @@ public class PanelSpawn : MonoBehaviour {
 			new Vector2(x_pos, y_pos),	//生成時の位置
 			transform.rotation			//生成時の角度
 		);
-		Debug.Log("PanelGo!!");
+//		Debug.Log("PanelGo!!");
 
 		//コンポーネント取得
 		Rigidbody2D panelRigidbody = panel.GetComponent<Rigidbody2D>();

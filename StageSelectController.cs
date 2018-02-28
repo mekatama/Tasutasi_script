@@ -30,38 +30,48 @@ public class StageSelectController : MonoBehaviour {
 		SceneManager.LoadScene("Main1yoko");	//シーンのロード
 	}
 	public void OnStage02ButtonClicked(){
-		SceneManager.LoadScene("Main2");	//シーンのロード
+//		SceneManager.LoadScene("Main2");	//シーンのロード
+		SceneManager.LoadScene("Main2yoko");	//シーンのロード
 	}
 	public void OnStage03ButtonClicked(){
-		SceneManager.LoadScene("Main3");	//シーンのロード
+//		SceneManager.LoadScene("Main3");	//シーンのロード
+		SceneManager.LoadScene("Main3yoko");	//シーンのロード
 	}
 	public void OnStage04ButtonClicked(){
-		SceneManager.LoadScene("Main4");	//シーンのロード
+//		SceneManager.LoadScene("Main4");	//シーンのロード
+		SceneManager.LoadScene("Main4yoko");	//シーンのロード
 	}
 	public void OnStage05ButtonClicked(){
-		SceneManager.LoadScene("Main5");	//シーンのロード
+//		SceneManager.LoadScene("Main5");	//シーンのロード
+		SceneManager.LoadScene("Main5yoko");	//シーンのロード
 	}
 	public void OnStage06ButtonClicked(){
-		SceneManager.LoadScene("Main6");	//シーンのロード
+//		SceneManager.LoadScene("Main6");	//シーンのロード
+		SceneManager.LoadScene("Main6yoko");	//シーンのロード
 	}
 	public void OnStage07ButtonClicked(){
 //		SceneManager.LoadScene("Main7");	//シーンのロード
 		SceneManager.LoadScene("Main7yoko");	//シーンのロード
 	}
 	public void OnStage08ButtonClicked(){
-		SceneManager.LoadScene("Main8");	//シーンのロード
+//		SceneManager.LoadScene("Main8");	//シーンのロード
+		SceneManager.LoadScene("Main8yoko");	//シーンのロード
 	}
 	public void OnStage09ButtonClicked(){
-		SceneManager.LoadScene("Main9");	//シーンのロード
+//		SceneManager.LoadScene("Main9");	//シーンのロード
+		SceneManager.LoadScene("Main9yoko");	//シーンのロード
 	}
 	public void OnStage10ButtonClicked(){
-		SceneManager.LoadScene("Main10");	//シーンのロード
+//		SceneManager.LoadScene("Main10");	//シーンのロード
+		SceneManager.LoadScene("Main10yoko");	//シーンのロード
 	}
 	public void OnStage11ButtonClicked(){
-		SceneManager.LoadScene("Main11");	//シーンのロード
+//		SceneManager.LoadScene("Main11");	//シーンのロード
+		SceneManager.LoadScene("Main11yoko");	//シーンのロード
 	}
 	public void OnStage12ButtonClicked(){
-		SceneManager.LoadScene("Main12");	//シーンのロード
+//		SceneManager.LoadScene("Main12");	//シーンのロード
+		SceneManager.LoadScene("Main12yoko");	//シーンのロード
 	}
 
 	//タイトルに戻るボタン用の制御関数

@@ -22,11 +22,6 @@ public class TitleController : MonoBehaviour {
 	public void OnHowToPlayButtonClicked(){
 		SceneManager.LoadScene("HowToPlay_yoko");	//シーンのロード
 	}
-
-	//タイトルに戻るボタン用の制御関数
-//	public void OnReturnTitleButtonClicked(){
-//		SceneManager.LoadScene("Title");	//シーンのロード
-//	}
 	
 	//アプリ終了
 	public void OnExitButtonClicked(){
@@ -38,6 +33,5 @@ public class TitleController : MonoBehaviour {
 	public void OnResetButtonClicked(){
 		PlayerPrefs.DeleteAll();
 		Debug.Log("全データ削除しますた");	
-//		PlayerPrefs.SetFloat("HighScore1", 0.0f);
 	}
 }

@@ -92,7 +92,8 @@ public class GameController : MonoBehaviour {
 			panelRotateFlag = 4;		//panelの回転ランダムflag
 			stageNum = 1;				//ステージ番号
 		}
-		if(SceneManager.GetActiveScene ().name == "Main2"){
+//		if(SceneManager.GetActiveScene ().name == "Main2"){
+		if(SceneManager.GetActiveScene ().name == "Main2yoko"){
 			calcNum = 3;				//計算する個数
 			syutudaiNum = 5;			//出題数の設定
 			imageUse = 0;				//画像パネルの使用判定(0:数字のみ,1:ランダム,2:画像のみ)
@@ -103,7 +104,8 @@ public class GameController : MonoBehaviour {
 			panelRotateFlag = 4;		//panelの回転ランダムflag
 			stageNum = 2;				//ステージ番号
 		}
-		if(SceneManager.GetActiveScene ().name == "Main3"){
+//		if(SceneManager.GetActiveScene ().name == "Main3"){
+		if(SceneManager.GetActiveScene ().name == "Main3yoko"){
 			calcNum = 5;				//計算する個数
 			syutudaiNum = 5;			//出題数の設定
 			imageUse = 0;				//画像パネルの使用判定(0:数字のみ,1:ランダム,2:画像のみ)
@@ -114,7 +116,8 @@ public class GameController : MonoBehaviour {
 			panelRotateFlag = 4;		//panelの回転ランダムflag
 			stageNum = 3;				//ステージ番号
 		}
-		if(SceneManager.GetActiveScene ().name == "Main4"){
+//		if(SceneManager.GetActiveScene ().name == "Main4"){
+		if(SceneManager.GetActiveScene ().name == "Main4yoko"){
 			calcNum = 2;				//計算する個数
 			syutudaiNum = 10;			//出題数の設定
 			imageUse = 0;				//画像パネルの使用判定(0:数字のみ,1:ランダム,2:画像のみ)
@@ -125,7 +128,8 @@ public class GameController : MonoBehaviour {
 			panelRotateFlag = 4;		//panelの回転ランダムflag
 			stageNum = 4;				//ステージ番号
 		}
-		if(SceneManager.GetActiveScene ().name == "Main5"){
+//		if(SceneManager.GetActiveScene ().name == "Main5"){
+		if(SceneManager.GetActiveScene ().name == "Main5yoko"){
 			calcNum = 3;				//計算する個数
 			syutudaiNum = 10;			//出題数の設定
 			imageUse = 0;				//画像パネルの使用判定(0:数字のみ,1:ランダム,2:画像のみ)
@@ -136,7 +140,8 @@ public class GameController : MonoBehaviour {
 			panelRotateFlag = 4;		//panelの回転ランダムflag
 			stageNum = 5;				//ステージ番号
 		}
-		if(SceneManager.GetActiveScene ().name == "Main6"){
+//		if(SceneManager.GetActiveScene ().name == "Main6"){
+		if(SceneManager.GetActiveScene ().name == "Main6yoko"){
 			calcNum = 5;				//計算する個数
 			syutudaiNum = 10;			//出題数の設定
 			imageUse = 0;				//画像パネルの使用判定(0:数字のみ,1:ランダム,2:画像のみ)
@@ -160,7 +165,8 @@ public class GameController : MonoBehaviour {
 			panelRotateFlag = 4;		//panelの回転ランダムflag
 			stageNum = 7;				//ステージ番号
 		}
-		if(SceneManager.GetActiveScene ().name == "Main8"){
+//		if(SceneManager.GetActiveScene ().name == "Main8"){
+		if(SceneManager.GetActiveScene ().name == "Main8yoko"){
 			calcNum = 3;				//計算する個数
 			syutudaiNum = 5;			//出題数の設定
 			imageUse = 1;				//画像パネルの使用判定(0:数字のみ,1:ランダム,2:画像のみ)
@@ -171,7 +177,8 @@ public class GameController : MonoBehaviour {
 			panelRotateFlag = 4;		//panelの回転ランダムflag
 			stageNum = 8;				//ステージ番号
 		}
-		if(SceneManager.GetActiveScene ().name == "Main9"){
+//		if(SceneManager.GetActiveScene ().name == "Main9"){
+		if(SceneManager.GetActiveScene ().name == "Main9yoko"){
 			calcNum = 5;				//計算する個数
 			syutudaiNum = 5;			//出題数の設定
 			imageUse = 1;				//画像パネルの使用判定(0:数字のみ,1:ランダム,2:画像のみ)
@@ -182,7 +189,8 @@ public class GameController : MonoBehaviour {
 			panelRotateFlag = 4;		//panelの回転ランダムflag
 			stageNum = 9;				//ステージ番号
 		}
-		if(SceneManager.GetActiveScene ().name == "Main10"){
+//		if(SceneManager.GetActiveScene ().name == "Main10"){
+		if(SceneManager.GetActiveScene ().name == "Main10yoko"){
 			calcNum = 2;				//計算する個数
 			syutudaiNum = 10;			//出題数の設定
 			imageUse = 1;				//画像パネルの使用判定(0:数字のみ,1:ランダム,2:画像のみ)
@@ -193,7 +201,8 @@ public class GameController : MonoBehaviour {
 			panelRotateFlag = 4;		//panelの回転ランダムflag
 			stageNum = 10;				//ステージ番号
 		}
-		if(SceneManager.GetActiveScene ().name == "Main11"){
+//		if(SceneManager.GetActiveScene ().name == "Main11"){
+		if(SceneManager.GetActiveScene ().name == "Main11yoko"){
 			calcNum = 3;				//計算する個数
 			syutudaiNum = 10;			//出題数の設定
 			imageUse = 1;				//画像パネルの使用判定(0:数字のみ,1:ランダム,2:画像のみ)
@@ -204,7 +213,8 @@ public class GameController : MonoBehaviour {
 			panelRotateFlag = 4;		//panelの回転ランダムflag
 			stageNum = 11;				//ステージ番号
 		}
-		if(SceneManager.GetActiveScene ().name == "Main12"){
+//		if(SceneManager.GetActiveScene ().name == "Main12"){
+		if(SceneManager.GetActiveScene ().name == "Main12yoko"){
 			calcNum = 5;				//計算する個数
 			syutudaiNum = 10;			//出題数の設定
 			imageUse = 1;				//画像パネルの使用判定(0:数字のみ,1:ランダム,2:画像のみ)
@@ -246,7 +256,7 @@ public class GameController : MonoBehaviour {
 				if(time > startTime){
 					startCamvas.enabled = false;	//StartUI非表示
 					Play();							//ステート変更
-					Debug.Log("State.Play");
+//					Debug.Log("State.Play");
 					time_finish = 0f;				//初期化
 				}
 //				Debug.Log("State.Ready");
@@ -261,7 +271,7 @@ public class GameController : MonoBehaviour {
 				if(calcNum == panelDestroyNum){
 //					playCamvas.enabled = false;		//playUI非表示
 					syutudaiNumNow += 1;			//現在の出題数をインクリメント
-					Debug.Log(syutudaiNumNow);
+//					Debug.Log(syutudaiNumNow);
 					Anser();						//ステート変更
 //					Debug.Log("State.Anser");
 				}
