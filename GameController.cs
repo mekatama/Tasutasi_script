@@ -36,6 +36,7 @@ public class GameController : MonoBehaviour {
 	public float timeClear;			//Clearした時間
 	public float timeBest;			//ハイスコア時間
 	public bool isTimeCount;		//timeのカウント開始flag
+	private int stageNum;			//ハイスコア用のステージ番号
 
 	public float startTime = 1.5f;		//UIのSTARTを表示する時間
 	float time = 0f;					//UIのSTARTを表示する時間用の変数
@@ -89,6 +90,7 @@ public class GameController : MonoBehaviour {
 			panelSpeed = -20.0f;		//panelのスピード
 			panelRotateSpeed = 0;		//panelの回転設定
 			panelRotateFlag = 4;		//panelの回転ランダムflag
+			stageNum = 1;				//ステージ番号
 		}
 		if(SceneManager.GetActiveScene ().name == "Main2"){
 			calcNum = 3;				//計算する個数
@@ -99,6 +101,7 @@ public class GameController : MonoBehaviour {
 			panelSpeed = -20.0f;		//panelのスピード
 			panelRotateSpeed = 0;		//panelの回転設定
 			panelRotateFlag = 4;		//panelの回転ランダムflag
+			stageNum = 2;				//ステージ番号
 		}
 		if(SceneManager.GetActiveScene ().name == "Main3"){
 			calcNum = 5;				//計算する個数
@@ -109,6 +112,7 @@ public class GameController : MonoBehaviour {
 			panelSpeed = -25.0f;		//panelのスピード
 			panelRotateSpeed = 0;		//panelの回転設定
 			panelRotateFlag = 4;		//panelの回転ランダムflag
+			stageNum = 3;				//ステージ番号
 		}
 		if(SceneManager.GetActiveScene ().name == "Main4"){
 			calcNum = 2;				//計算する個数
@@ -119,6 +123,7 @@ public class GameController : MonoBehaviour {
 			panelSpeed = -25.0f;		//panelのスピード
 			panelRotateSpeed = 0;		//panelの回転設定
 			panelRotateFlag = 4;		//panelの回転ランダムflag
+			stageNum = 4;				//ステージ番号
 		}
 		if(SceneManager.GetActiveScene ().name == "Main5"){
 			calcNum = 3;				//計算する個数
@@ -129,6 +134,7 @@ public class GameController : MonoBehaviour {
 			panelSpeed = -30.0f;		//panelのスピード
 			panelRotateSpeed = 0;		//panelの回転設定
 			panelRotateFlag = 4;		//panelの回転ランダムflag
+			stageNum = 5;				//ステージ番号
 		}
 		if(SceneManager.GetActiveScene ().name == "Main6"){
 			calcNum = 5;				//計算する個数
@@ -139,6 +145,7 @@ public class GameController : MonoBehaviour {
 			panelSpeed = -30.0f;		//panelのスピード
 			panelRotateSpeed = 0;		//panelの回転設定
 			panelRotateFlag = 4;		//panelの回転ランダムflag
+			stageNum = 6;				//ステージ番号
 		}
 		//数字と画像
 //		if(SceneManager.GetActiveScene ().name == "Main7"){
@@ -151,6 +158,7 @@ public class GameController : MonoBehaviour {
 			panelSpeed = -20.0f;		//panelのスピード
 			panelRotateSpeed = 0;		//panelの回転設定
 			panelRotateFlag = 4;		//panelの回転ランダムflag
+			stageNum = 7;				//ステージ番号
 		}
 		if(SceneManager.GetActiveScene ().name == "Main8"){
 			calcNum = 3;				//計算する個数
@@ -161,6 +169,7 @@ public class GameController : MonoBehaviour {
 			panelSpeed = -20.0f;		//panelのスピード
 			panelRotateSpeed = 0;		//panelの回転設定
 			panelRotateFlag = 4;		//panelの回転ランダムflag
+			stageNum = 8;				//ステージ番号
 		}
 		if(SceneManager.GetActiveScene ().name == "Main9"){
 			calcNum = 5;				//計算する個数
@@ -171,6 +180,7 @@ public class GameController : MonoBehaviour {
 			panelSpeed = -25.0f;		//panelのスピード
 			panelRotateSpeed = 0;		//panelの回転設定
 			panelRotateFlag = 4;		//panelの回転ランダムflag
+			stageNum = 9;				//ステージ番号
 		}
 		if(SceneManager.GetActiveScene ().name == "Main10"){
 			calcNum = 2;				//計算する個数
@@ -181,6 +191,7 @@ public class GameController : MonoBehaviour {
 			panelSpeed = -25.0f;		//panelのスピード
 			panelRotateSpeed = 0;		//panelの回転設定
 			panelRotateFlag = 4;		//panelの回転ランダムflag
+			stageNum = 10;				//ステージ番号
 		}
 		if(SceneManager.GetActiveScene ().name == "Main11"){
 			calcNum = 3;				//計算する個数
@@ -191,6 +202,7 @@ public class GameController : MonoBehaviour {
 			panelSpeed = -30.0f;		//panelのスピード
 			panelRotateSpeed = 0;		//panelの回転設定
 			panelRotateFlag = 4;		//panelの回転ランダムflag
+			stageNum = 11;				//ステージ番号
 		}
 		if(SceneManager.GetActiveScene ().name == "Main12"){
 			calcNum = 5;				//計算する個数
@@ -201,6 +213,7 @@ public class GameController : MonoBehaviour {
 			panelSpeed = -30.0f;		//panelのスピード
 			panelRotateSpeed = 0;		//panelの回転設定
 			panelRotateFlag = 4;		//panelの回転ランダムflag
+			stageNum = 12;				//ステージ番号
 		}
 		Debug.Log("Stage:" + SceneManager.GetActiveScene ().name);
 
@@ -322,16 +335,13 @@ public class GameController : MonoBehaviour {
 				if(seikaiNum == syutudaiNum){
 					if(seGo == false){
 						//各ステージのハイスコア判定
-						if(SceneManager.GetActiveScene ().name == "Main1yoko"){
-							if(PlayerPrefs.GetFloat("HighScore1") > timeClear){
+						if(SceneManager.GetActiveScene ().name == "Main" + stageNum.ToString() + "yoko"){
+//						if(SceneManager.GetActiveScene ().name == "Main1yoko"){
+							if(PlayerPrefs.GetFloat("HighScore" + stageNum.ToString()) > timeClear){
+//							if(PlayerPrefs.GetFloat("HighScore1") > timeClear){
 								HighScore();					//ハイスコア処理関数
-								PlayerPrefs.SetFloat("HighScore1", timeBest);
-							}
-						}
-						if(SceneManager.GetActiveScene ().name == "Main7yoko"){
-							if(PlayerPrefs.GetFloat("HighScore7") > timeClear){
-								HighScore();					//ハイスコア処理関数
-								PlayerPrefs.SetFloat("HighScore7", timeBest);
+								PlayerPrefs.SetFloat("HighScore" + stageNum.ToString(), timeBest);
+//								PlayerPrefs.SetFloat("HighScore1", timeBest);
 							}
 						}
 
