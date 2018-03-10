@@ -12,6 +12,7 @@ public class Panel : MonoBehaviour {
 		//gcって仮の変数にGameControllerのコンポーネントを入れる
 		GameController gc = gameController.GetComponent<GameController>();
 		panelRot = Random.Range(0, gc.panelRotateFlag);		//各panelが回転するかどうか判定
+		Debug.Log("回転確率:" + panelRot);
 	}
 
 	void Update () {
