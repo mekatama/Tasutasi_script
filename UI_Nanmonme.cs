@@ -11,6 +11,7 @@ public class UI_Nanmonme : MonoBehaviour {
 		//gcって仮の変数にGameControllerのコンポーネントを入れる
 		GameController gc = gameController.GetComponent<GameController>();
 		//テキスト表示
-		nanmonmeText.text = "第 " + gc.syutudaiNumNow + " 問";
+		nanmonmeText.text = "Question " + gc.syutudaiNumNow;
+//		nanmonmeText.text = "第 " + gc.syutudaiNumNow + " 問";
 	}
 }
