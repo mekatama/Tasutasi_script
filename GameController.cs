@@ -36,7 +36,8 @@ public class GameController : MonoBehaviour {
 	public float timeClear;			//Clearした時間
 	public float timeBest;			//ハイスコア時間
 	public bool isTimeCount;		//timeのカウント開始flag
-	private int stageNum;			//ハイスコア用のステージ番号
+	public int stageNum;			//ハイスコア用のステージ番号
+	public int stageOpenNum;		//セレクト画面のボタン表示用フラグ
 
 	public float startTime = 1.5f;		//UIのSTARTを表示する時間
 	float time = 0f;					//UIのSTARTを表示する時間用の変数
@@ -359,7 +360,20 @@ public class GameController : MonoBehaviour {
 						audioSource.clip = audioClipOk;	//SE決定
 						audioSource.Play ();			//SE再生
 						seGo = true;
+
+						//セレクト画面のボタン表示用
+//						PlayerPrefs.SetInt("StageOpen", stageNum);
+
+						Debug.Log("StageNum" + stageNum);
+						Debug.Log("StageOpen" + PlayerPrefs.GetInt("StageOpen"));
+
+						//セレクト画面のボタン表示用制御
+						if(PlayerPrefs.GetInt("StageOpen") == stageNum){
+							PlayerPrefs.SetInt("StageOpen", stageNum + 1);	//全問正解で次のステージOPEN
+							Debug.Log("StageOpen" + PlayerPrefs.GetInt("StageOpen"));
+						}
 					}
+
 				}else if(seikaiNum != 0){
 					if(seGo == false){
 						isKamifubuki = true;			//紙吹雪エフェクトon
